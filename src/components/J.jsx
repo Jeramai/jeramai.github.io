@@ -2,7 +2,7 @@ import { AsciiRenderer, OrbitControls, Text3D } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useRef } from 'react';
 
-const font = '/Inter_Regular.json';
+const font = (process.env.NODE_ENV === 'development' ? '' : '/jeram.ai') + '/Inter_Regular.json';
 
 export default function J() {
   return (
