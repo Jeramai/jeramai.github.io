@@ -4,5 +4,5 @@ module.exports = {
     loader: 'akamai',
     path: '',
   },
-  assetPrefix: './',
+  assetPrefix: './jeram.ai/',
 };
