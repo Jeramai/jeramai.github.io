@@ -9,7 +9,7 @@ export default function Logo() {
   }, []);
 
   return (
-    <div className='absolute left-0 top-0 w-full p-12 select-none' onClick={toLinkedIn}>
+    <div className='absolute left-0 top-0 w-full p-4 md:p-12 select-none' onClick={toLinkedIn}>
       <Image src={img} alt='logo' width={65} height={65} className=' cursor-pointer' />
     </div>
   );

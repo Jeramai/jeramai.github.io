@@ -6,7 +6,7 @@ import Logo from '@/components/Logo'
 
 export default function Home() {
   return (
-    <main className="h-screen p-24">
+    <main className="h-screen lg:p-24">
       <div className='h-full flex flex-col items-center justify-between' style={{
         background: 'linear-gradient(to bottom, transparent, #2e094a) #051e32'
       }}>
