@@ -4,7 +4,7 @@
     height: 200px;
     width: 200px;
     border-radius: 30% 50% 20% 40%;
-    animation: transform 20s ease-in-out infinite both alternate, movement_one 40s ease-in-out infinite both;
+    animation: transform 20s ease-in-out infinite both alternate, movement_one 20s ease-in-out infinite both;
     opacity: 0.7;
     position: absolute;
     left: 70%;
@@ -16,7 +16,7 @@
       left: 4vw;
       top: 12vh;
       transform: rotate(-180deg);
-      animation: transform 30s ease-in-out infinite both alternate, movement_two 60s ease-in-out infinite both;
+      animation: transform 30s ease-in-out infinite both alternate, movement_two 30s ease-in-out infinite both;
     }
 
     &.three {
@@ -25,7 +25,7 @@
       left: calc(50vw - 350px);
       top: calc(90vh - 350px);
       transform: rotate(-180deg);
-      animation: transform 30s ease-in-out infinite both alternate, movement_three 60s ease-in-out infinite both;
+      animation: transform 30s ease-in-out infinite both alternate, movement_three 25s ease-in-out infinite both;
     }
   }
 
