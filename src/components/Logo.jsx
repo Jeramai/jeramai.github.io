@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useCallback } from 'react';
-import img from '/public/img/logo.svg';
+import img from '../../public/img/logo.svg';
 
 export default function Logo() {
   const toLinkedIn = useCallback(() => {

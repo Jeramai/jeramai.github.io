@@ -10,17 +10,18 @@
     "export": "next export"
   },
   "dependencies": {
-    "@react-three/drei": "^9.65.5",
-    "@react-three/fiber": "^8.12.2",
-    "autoprefixer": "10.4.14",
-    "eslint": "8.38.0",
-    "eslint-config-next": "13.3.0",
-    "next": "13.3.0",
-    "postcss": "8.4.23",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "sass": "^1.62.0",
-    "tailwindcss": "3.3.1",
-    "three": "^0.151.3"
+    "@react-three/drei": "^10.0.2",
+    "@react-three/fiber": "^9.0.4",
+    "@tailwindcss/postcss": "^4.0.9",
+    "autoprefixer": "10.4.20",
+    "eslint": "9.21.0",
+    "eslint-config-next": "15.1.7",
+    "next": "15.1.7",
+    "postcss": "8.5.3",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "sass": "^1.85.1",
+    "tailwindcss": "4.0.9",
+    "three": "^0.173.0"
   }
 }
