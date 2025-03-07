@@ -32,7 +32,7 @@ type WaterOptions = {
 };
 
 class WaterMesh extends Mesh {
-  static WaterShader = {
+  static readonly WaterShader = {
     uniforms: {
       color: {
         value: null
@@ -195,21 +195,17 @@ class WaterMesh extends Mesh {
   constructor(geometry: any, options: WaterOptions = {}) {
     super(geometry);
 
-    //this.isWater = true;
-
-    //this.type = 'Water';
-
     const scope = this;
 
     const color = options.color !== undefined ? new Color(options.color) : new Color(0xffffff);
-    const textureWidth = options.textureWidth || 512;
-    const textureHeight = options.textureHeight || 512;
-    const clipBias = options.clipBias || 0;
+    const textureWidth = options.textureWidth ?? 512;
+    const textureHeight = options.textureHeight ?? 512;
+    const clipBias = options.clipBias ?? 0;
     const flowDirection = options.flowDirection || new Vector2(1, 0);
-    const flowSpeed = options.flowSpeed || 0.03;
-    const reflectivity = options.reflectivity || 0.02;
-    const scale = options.scale || 1;
-    const shader: any = options.shader || WaterMesh.WaterShader;
+    const flowSpeed = options.flowSpeed ?? 0;
+    const reflectivity = options.reflectivity ?? 0.02;
+    const scale = options.scale ?? 1;
+    const shader: any = options.shader ?? WaterMesh.WaterShader;
     const encoding = options.encoding !== undefined ? options.encoding : 3000;
 
     const flowMap = options.flowMap || undefined;
@@ -354,4 +350,4 @@ class WaterMesh extends Mesh {
   }
 }
 
-export { WaterMesh };
+export default WaterMesh;

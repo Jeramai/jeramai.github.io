@@ -1,4 +1,4 @@
-export type Project = {
+type Project = {
   title: string;
   category: string;
   description: string;
@@ -6,3 +6,5 @@ export type Project = {
   github: string;
   demo: string;
 };
+
+export default Project;

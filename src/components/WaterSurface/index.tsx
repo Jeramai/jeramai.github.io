@@ -1,8 +1,10 @@
+'use client';
+
 import { useTexture } from '@react-three/drei';
 import { useThree } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
 import { PlaneGeometry, Vector2 } from 'three';
-import { WaterMesh } from './Water/Mesh';
+import WaterMesh from './Water/Mesh';
 
 type Props = {
   children?: React.ReactNode;
@@ -19,25 +21,25 @@ type Props = {
   fxDisplayColorAlpha?: number;
 };
 
+const DEFAULT_FLOW_DIRECTION = new Vector2(1.0, 0.5);
 export default function WaterSurface({
   position,
   width = 190,
   length = 190,
   color,
   scale = 11,
-  flowDirection = new Vector2(1.0, 0.5),
+  flowDirection = DEFAULT_FLOW_DIRECTION,
   flowSpeed = 0.01,
   dimensions = 1024,
   reflectivity = 1.2,
   fxDistortionFactor = 0.2,
   fxDisplayColorAlpha = 0.0
 }: Readonly<Props>) {
-  const ref = useRef<any>(null);
-  const refPointer = useRef(new Vector2(0, 0));
+  const ref = useRef<WaterMesh>(null);
 
   const gl = useThree((state) => state.gl);
   const [waterNormals1, waterNormals2] = useTexture(['/water/Water_1_M_Normal.jpg', '/water/Water_2_M_Normal.jpg']);
-  //waterNormals.wrapS = waterNormals.wrapT = RepeatWrapping;
+
   const geom = useMemo(() => new PlaneGeometry(width, length), [length, width]);
   const config = useMemo(
     () => ({
@@ -68,13 +70,7 @@ export default function WaterSurface({
       waterNormals2
     ]
   );
-
   const waterObj = useMemo(() => new WaterMesh(geom, config), [geom, config]);
-  const handlePointerMove = (e: any) => {
-    refPointer.current = e.uv.multiplyScalar(2).subScalar(1);
-  };
 
-  return (
-    <primitive ref={ref} onPointerMove={handlePointerMove} object={waterObj} rotation-x={-Math.PI / 2} position={position} />
-  );
+  return <primitive ref={ref} object={waterObj} rotation-x={-Math.PI / 2} position={position} />;
 }
