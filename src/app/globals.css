@@ -157,6 +157,7 @@
 
   * {
     @apply border-border outline-ring/50;
+    font-family: monospace;
   }
   body {
     @apply bg-background text-foreground;
