@@ -153,16 +153,16 @@ export default function Home() {
             <div className='lg:w-2/3 backdrop-blur-md bg-background/30 p-8 rounded-lg border border-primary/20 shadow-lg'>
               <h2 className='text-3xl md:text-4xl font-bold mb-6 text-primary'>About Me</h2>
               <p className='text-lg mb-4 text-primary/80'>
-                Hello! I'm Jeramai, a passionate full-stack developer with over {experienceYears} years of experience building web
-                applications. I specialize in React, Node.js, and modern web technologies.
+                {`Hello! I'm Jeramai, a passionate full-stack developer with over ${experienceYears} years of experience building web
+                applications. I specialize in React, Node.js, and modern web technologies.`}
               </p>
               <p className='text-lg mb-4 text-primary/80'>
-                My journey in web development started when I built my first website at the age of 16. Since then, I've worked with
-                startups and established companies to create intuitive and performant digital experiences.
+                {`My journey in web development started when I built my first website at the age of 16. Since then, I've worked with
+                startups and established companies to create intuitive and performant digital experiences.`}
               </p>
               <p className='text-lg mb-6 text-primary/80'>
-                When I'm not coding, you can find me around town trying different pizza places, watching a movie, or experimenting
-                with new technologies.
+                {`When I'm not coding, you can find me around town trying different pizza places, watching a movie, or experimenting
+                with new technologies.`}
               </p>
               <div className='flex flex-wrap gap-4'>
                 {/* Frontend Frameworks/Libraries */}
@@ -209,8 +209,8 @@ export default function Home() {
           <div className='backdrop-blur-md bg-background/30 p-8 rounded-lg border border-primary/20 shadow-lg max-w-3xl mx-auto'>
             <h2 className='text-3xl md:text-4xl font-bold mb-6 text-primary'>Get In Touch</h2>
             <p className='text-lg mb-8 max-w-2xl mx-auto text-primary/80'>
-              I'm currently open to freelance opportunities and interesting projects. If you'd like to work together or just say
-              hello, feel free to reach out!
+              {`I'm currently open to freelance opportunities and interesting projects. If you'd like to work together or just say
+              hello, feel free to reach out!`}
             </p>
             <div className='flex justify-center gap-6 mb-12'>
               <SocialLink href='https://github.com/jeramai' icon={<Github size={24} />} label='GitHub' />
