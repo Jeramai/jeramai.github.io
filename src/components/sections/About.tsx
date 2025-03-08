@@ -1,8 +1,31 @@
 import Skill from '@/components/ui/Skill';
+import projects from '@/lib/projects';
 import Image from 'next/image';
 
 export default function About() {
   const experienceYears = new Date().getFullYear() - 2018;
+  const skills = [
+    ...new Set(
+      [
+        ...(projects?.flatMap((project) => project?.tags) ?? []),
+        'React',
+        'Next.js',
+        'React Native',
+        'Ionic',
+        'TypeScript',
+        'PHP',
+        'Python',
+        'Node.js',
+        'Laravel',
+        'MySQL',
+        'web3.js',
+        'Tailwind CSS',
+        'SCSS',
+        'Three.js',
+        'Flutter'
+      ].sort((a, b) => a.localeCompare(b))
+    )
+  ];
 
   return (
     <section id='about' className='py-20 relative overflow-hidden'>
@@ -35,29 +58,9 @@ export default function About() {
             with new technologies.`}
             </p>
             <div className='flex flex-wrap gap-4'>
-              {/* Frontend Frameworks/Libraries */}
-              <Skill>React</Skill>
-              <Skill>Next.js</Skill>
-              <Skill>React Native</Skill>
-
-              {/* Programming Languages */}
-              <Skill>TypeScript</Skill>
-              <Skill>PHP</Skill>
-
-              {/* Backend Technologies */}
-              <Skill>Node.js</Skill>
-              <Skill>Laravel</Skill>
-              <Skill>MySQL</Skill>
-
-              {/* Styling */}
-              <Skill>Tailwind CSS</Skill>
-              <Skill>SCSS</Skill>
-
-              {/* Graphics/3D */}
-              <Skill>Three.js</Skill>
-
-              {/* Mobile Development */}
-              <Skill>Flutter</Skill>
+              {skills?.map((tag, index) => (
+                <Skill key={index}>{tag}</Skill>
+              ))}
             </div>
           </div>
         </div>

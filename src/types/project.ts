@@ -3,8 +3,10 @@ type Project = {
   category: string;
   description: string;
   image: string;
-  github: string;
-  demo: string;
+  tags: string[];
+  github?: string;
+  demo?: string;
+  aiImage?: boolean;
 };
 
 export default Project;
