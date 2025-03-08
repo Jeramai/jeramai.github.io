@@ -29,7 +29,7 @@ export default function WaterSurface({
   color,
   scale = 11,
   flowDirection = DEFAULT_FLOW_DIRECTION,
-  flowSpeed = 0.01,
+  flowSpeed = 0.02,
   dimensions = 1024,
   reflectivity = 1.2,
   fxDistortionFactor = 0.2,

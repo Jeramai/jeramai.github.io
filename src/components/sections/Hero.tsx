@@ -62,8 +62,8 @@ function HeroCanvas() {
   }, []);
 
   useFrame(({ camera, clock }) => {
-    camera.position.x = Math.sin(clock.elapsedTime * 0.05) * 5;
-    camera.position.z = Math.cos(clock.elapsedTime * 0.05) * 5;
+    camera.position.x = Math.sin(clock.elapsedTime * 0.025) * 5;
+    camera.position.z = Math.cos(clock.elapsedTime * 0.025) * 5;
     camera.lookAt(0, 0, 0);
   });
 
