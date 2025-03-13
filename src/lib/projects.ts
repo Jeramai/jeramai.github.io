@@ -83,7 +83,7 @@ const projects: Project[] = [
     description:
       'As my first solo Web3 project, I developed and launched a decentralized application on the Ronin blockchain, enabling users to directly swap NFTs, providing a valuable community tool and demonstrating my blockchain development capabilities.',
     image: '/projects/ronin-nft-swap.png',
-    demo: '',
+    demo: 'https://ronin-nft-trading.vercel.app/',
     github: 'https://github.com/Jeramai/RON-NFT-Swap',
     tags: ['Next.js', 'web3.js']
   },
