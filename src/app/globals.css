@@ -91,18 +91,21 @@
 @utility shuffle-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  padding: 12px 26px;
+  min-width: 0;
+  padding: 12px clamp(10px, 4vw, 26px);
   border: var(--border-w) solid var(--border);
   border-radius: var(--radius);
   background: linear-gradient(180deg, var(--head-a), var(--head-b));
   box-shadow: var(--shadow);
   color: var(--head-ink);
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: clamp(0.82rem, 3.4vw, 1.05rem);
   font-weight: 700;
   letter-spacing: var(--head-spacing);
   text-transform: uppercase;
+  white-space: nowrap;
   cursor: pointer;
 
   &:hover {

@@ -25,7 +25,7 @@ export default function Masthead() {
         <span className='animate-blink'>+++</span> Welcome to my corner of cyberspace <span className='animate-blink'>+++</span>
       </p>
 
-      <div className='flex flex-wrap items-stretch justify-center gap-2'>
+      <div className='flex flex-nowrap items-stretch justify-center gap-2'>
         <button type='button' onClick={prev} className='chev-btn' aria-label='Previous theme'>
           &#9664;
         </button>

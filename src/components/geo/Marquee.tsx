@@ -9,10 +9,11 @@ export default function Marquee() {
   const { theme } = useTheme();
   const items = [`NOW ENTERING: ${theme.name}`, ...SHOUTS];
 
+  // The theme slot is width-reserved: hydration swaps a longer name in and would otherwise shift the track.
   const run = (copy: string) =>
     items.map((item, i) => (
       <Fragment key={`${copy}-${item}`}>
-        <span className='px-7'>{item}</span>
+        <span className={i === 0 ? 'inline-block min-w-[31ch] px-7' : 'px-7'}>{item}</span>
         {i < items.length - 1 ? <span className='text-marquee-sep'>◆◆◆</span> : null}
       </Fragment>
     ));
