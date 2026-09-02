@@ -79,16 +79,12 @@ type ThemeControls = {
   index: number;
   total: number;
   shuffle: () => void;
-  prev: () => void;
-  next: () => void;
 };
 
 export function useTheme(): ThemeControls {
   const id = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const found = all.findIndex((t) => t.id === id);
   const index = found < 0 ? 0 : found;
-
-  const step = (by: number) => setTheme(themes[(index + by + themes.length) % themes.length].id);
 
   const shuffle = () => {
     let pick = index;
@@ -100,30 +96,25 @@ export function useTheme(): ThemeControls {
     theme: all[index],
     index: Math.min(index, themes.length - 1),
     total: themes.length,
-    shuffle,
-    prev: () => step(-1),
-    next: () => step(1)
+    shuffle
   };
 }
 
-/* Arrow keys step themes, S shuffles. Ignored while a control or a text field has focus. */
+/* S shuffles. Ignored while a control or a text field has focus. */
 export function useThemeKeys() {
-  const { prev, next, shuffle } = useTheme();
+  const { shuffle } = useTheme();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key !== 's' && e.key !== 'S') return;
       const el = document.activeElement;
       const tag = el?.tagName;
       if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (el as HTMLElement | null)?.isContentEditable) return;
-
-      if (e.key === 'ArrowLeft') prev();
-      else if (e.key === 'ArrowRight') next();
-      else if (e.key === 's' || e.key === 'S') shuffle();
-      else return;
+      shuffle();
       e.preventDefault();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [prev, next, shuffle]);
+  }, [shuffle]);
 }

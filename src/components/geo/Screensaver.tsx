@@ -1,5 +1,6 @@
 'use client';
 
+import { useScrollLock } from '@/lib/use-scroll-lock';
 import { useEffect, useRef, useState } from 'react';
 
 const IDLE_MS = 60_000;
@@ -7,8 +8,9 @@ const SPEED = 1.6;
 
 export default function Screensaver() {
   const [on, setOn] = useState(false);
-  const [hits, setHits] = useState(0);
   const boxRef = useRef<HTMLDivElement | null>(null);
+
+  useScrollLock(on);
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -45,19 +47,14 @@ export default function Screensaver() {
       x += dx;
       y += dy;
 
-      let bounced = false;
       if (x <= 0 || x >= maxX) {
         dx = -dx;
         x = Math.max(0, Math.min(x, maxX));
-        bounced = true;
       }
       if (y <= 0 || y >= maxY) {
         dy = -dy;
         y = Math.max(0, Math.min(y, maxY));
-        bounced = true;
       }
-      // The corner is the whole reason anyone watches one of these.
-      if (bounced && (x <= 1 || x >= maxX - 1) && (y <= 1 || y >= maxY - 1)) setHits((n) => n + 1);
 
       box.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       raf = requestAnimationFrame(tick);
@@ -74,9 +71,6 @@ export default function Screensaver() {
       <div ref={boxRef} className='absolute top-0 left-0 will-change-transform'>
         <span className='block font-display text-4xl font-black tracking-widest text-accent [text-shadow:3px_3px_0_var(--head-b)]'>
           JERAM.AI
-        </span>
-        <span className='mt-1 block text-center font-display text-[0.7rem] tracking-widest text-ink-dim'>
-          {hits > 0 ? `CORNER HITS: ${hits}` : 'MOVE THE MOUSE'}
         </span>
       </div>
     </div>

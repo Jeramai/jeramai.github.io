@@ -58,7 +58,7 @@ export default function SecretCodes() {
   return (
     <output className='pointer-events-none fixed bottom-3 left-1/2 z-[70] -translate-x-1/2'>
       <p className='edge theme-shadow m-0 head-gradient px-4 py-2 font-display text-sm font-bold tracking-widest uppercase'>
-        {found ? '★ 1997 unlocked — secret theme ★' : '▶▶ Turbo mode — Konami again to stop ◀◀'}
+        {found ? '★ 1997 unlocked — secret theme ★' : '▶▶ Turbo mode ◀◀'}
       </p>
     </output>
   );

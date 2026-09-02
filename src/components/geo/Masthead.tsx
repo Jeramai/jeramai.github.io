@@ -5,7 +5,7 @@ import { useTheme, useThemeKeys } from '@/lib/theme-store';
 import { useRef } from 'react';
 
 export default function Masthead() {
-  const { theme, index, total, shuffle, prev, next } = useTheme();
+  const { theme, index, total, shuffle } = useTheme();
   useThemeKeys();
 
   const taps = useRef<number[]>([]);
@@ -42,17 +42,9 @@ export default function Masthead() {
         <span className='animate-blink'>+++</span> Welcome to my corner of cyberspace <span className='animate-blink'>+++</span>
       </p>
 
-      <div className='flex flex-nowrap items-stretch justify-center gap-2'>
-        <button type='button' onClick={prev} className='chev-btn' aria-label='Previous theme'>
-          &#9664;
-        </button>
-        <button type='button' onClick={shuffle} className='shuffle-btn'>
-          Shuffle my theme!!!
-        </button>
-        <button type='button' onClick={next} className='chev-btn' aria-label='Next theme'>
-          &#9654;
-        </button>
-      </div>
+      <button type='button' onClick={shuffle} className='shuffle-btn'>
+        Shuffle my theme!!!
+      </button>
 
       <p className='mt-2.5 mb-0 text-[0.85rem] font-bold tracking-wider uppercase'>
         {theme.id === 't1997' ? (

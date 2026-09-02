@@ -1,5 +1,6 @@
 'use client';
 
+import { useScrollLock } from '@/lib/use-scroll-lock';
 import { useEffect, useState } from 'react';
 
 export const BSOD_EVENT = 'jf:bsod';
@@ -9,6 +10,8 @@ const TAP_GRACE_MS = 4000;
 
 export default function Bsod() {
   const [crashed, setCrashed] = useState(false);
+
+  useScrollLock(crashed);
 
   useEffect(() => {
     const onCrash = () => setCrashed(true);

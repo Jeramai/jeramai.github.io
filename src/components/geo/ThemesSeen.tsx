@@ -1,14 +1,13 @@
 'use client';
 
 import Panel from '@/components/geo/Panel';
-import { hasFoundSecret, seenCount, subscribeThemes, useTheme } from '@/lib/theme-store';
-import themes from '@/lib/themes.generated';
+import { seenCount, setTheme, subscribeThemes, useTheme } from '@/lib/theme-store';
+import themes, { secretTheme } from '@/lib/themes.generated';
 import { useSyncExternalStore } from 'react';
 
 export default function ThemesSeen() {
   const { theme } = useTheme();
   const seen = useSyncExternalStore(subscribeThemes, seenCount, () => 0);
-  const secret = useSyncExternalStore(subscribeThemes, hasFoundSecret, () => false);
 
   const total = themes.length;
   const pct = Math.round((seen / total) * 100);
@@ -24,13 +23,18 @@ export default function ThemesSeen() {
         <div className='head-gradient h-full transition-[width] duration-300' style={{ width: `${pct}%` }} />
       </div>
 
-      <p className='m-0 text-[0.75rem] text-ink-dim'>
-        {complete
-          ? 'All 99. You pressed that button a lot.'
-          : `Keep shuffling. ${total - seen} to go. Currently on ${theme.name}.`}
-      </p>
+      <p className='m-0 text-[0.75rem] text-ink-dim'>{theme.name}</p>
 
-      {secret ? <p className='m-0 text-[0.75rem] font-bold text-hot'>+ 1 secret theme found</p> : null}
+      {complete ? (
+        <button
+          type='button'
+          onClick={() => setTheme(secretTheme.id)}
+          className='geo-btn w-full'
+          aria-pressed={theme.id === secretTheme.id}
+        >
+          + 1 secret theme
+        </button>
+      ) : null}
     </Panel>
   );
 }
