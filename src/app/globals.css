@@ -185,6 +185,14 @@
   );
 }
 
+/* Best viewed at 800x600, taken literally. */
+[data-letterbox] body {
+  max-width: 800px;
+  margin: 0 auto;
+  border-left: 2px solid var(--border);
+  border-right: 2px solid var(--border);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
