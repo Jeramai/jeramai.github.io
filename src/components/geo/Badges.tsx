@@ -1,5 +1,6 @@
 'use client';
 
+import { JUKEBOX_PLAY } from '@/components/geo/MidiJukebox';
 import { useEffect, useState } from 'react';
 
 type Badge = {
@@ -32,14 +33,41 @@ const BADGES: Badge[] = [
     bg: '#202020',
     accent: '#ff6a00'
   },
-  { key: 'y2k', title: 'Y2K compliant', top: 'Y2K', bottom: 'COMPLIANT', ink: '#00ff88', bg: '#04240f', accent: '#00ff88' },
-  { key: 'html', title: 'Valid HTML 4.0', top: 'VALID', bottom: 'HTML 4.0', ink: '#ffffff', bg: '#003366', accent: '#ffcc00' }
+  {
+    key: 'blink',
+    title: 'Blink tag enabled',
+    top: '<BLINK>',
+    bottom: 'ENABLED',
+    ink: '#fff3a0',
+    bg: '#2a1500',
+    accent: '#ffaa00'
+  },
+  { key: 'html', title: 'Valid HTML 4.0', top: 'VALID', bottom: 'HTML 4.0', ink: '#ffffff', bg: '#003366', accent: '#ffcc00' },
+  {
+    key: 'comic',
+    title: 'Comic Sans approved',
+    top: 'COMIC SANS',
+    bottom: 'APPROVED',
+    ink: '#3a1030',
+    bg: '#ffd9f2',
+    accent: '#c4009c'
+  },
+  { key: 'midi', title: 'MIDI powered', top: 'MIDI', bottom: 'POWERED', ink: '#ffffff', bg: '#3a0d4d', accent: '#ff7be5' },
+  {
+    key: 'browser',
+    title: 'Your browser is wrong',
+    top: 'YOUR BROWSER',
+    bottom: 'IS WRONG',
+    ink: '#ffd0d0',
+    bg: '#3a0b0b',
+    accent: '#ff5555'
+  }
 ];
 
-const DIALOGS: Record<string, { title: string; lines: string[] }> = {
+const DIALOGS: Record<string, { title: string; lines: () => string[] }> = {
   netscape: {
     title: 'Downloading Netscape Navigator 4.0',
-    lines: [
+    lines: () => [
       'netscape32.exe — 11.4 MB',
       '',
       'Time remaining: 4 hours 12 minutes',
@@ -50,7 +78,7 @@ const DIALOGS: Record<string, { title: string; lines: string[] }> = {
   },
   notepad: {
     title: 'index.html — Notepad',
-    lines: [
+    lines: () => [
       '<!-- Written entirely in Notepad. -->',
       '<!-- Any resemblance to a build step -->',
       '<!-- is purely coincidental.        -->',
@@ -59,9 +87,13 @@ const DIALOGS: Record<string, { title: string; lines: string[] }> = {
       'becomes index.html.txt again.)'
     ]
   },
+  browser: {
+    title: 'Browser Compatibility Check',
+    lines: browserLines
+  },
   html: {
     title: 'W3C Markup Validation Service',
-    lines: [
+    lines: () => [
       'Result: 0 Errors, 1 Warning',
       '',
       'Warning: document is not HTML 4.0.',
@@ -73,7 +105,39 @@ const DIALOGS: Record<string, { title: string; lines: string[] }> = {
   }
 };
 
-const MODES = new Set(['res', 'y2k']);
+const MODES = new Set(['res', 'comic', 'blink']);
+const ACTIONS: Record<string, () => void> = {
+  midi: () => window.dispatchEvent(new Event(JUKEBOX_PLAY))
+};
+
+function browserLines() {
+  const ua = navigator.userAgent;
+  const found =
+    /Edg\/([\d.]+)/.exec(ua) ??
+    /Chrome\/([\d.]+)/.exec(ua) ??
+    /Version\/([\d.]+).*Safari/.exec(ua) ??
+    /Firefox\/([\d.]+)/.exec(ua);
+  const name = /Edg\//.test(ua)
+    ? 'Edge'
+    : /Chrome\//.test(ua)
+      ? 'Chrome'
+      : /Safari/.test(ua)
+        ? 'Safari'
+        : /Firefox\//.test(ua)
+          ? 'Firefox'
+          : 'something';
+  const version = found?.[1]?.split('.')[0] ?? '?';
+  return [
+    `Detected: ${name} ${version}`,
+    '',
+    `${name} did not exist in 1997.`,
+    'This page was tested against',
+    'Netscape Navigator 4.0 and',
+    'Internet Explorer 4.',
+    '',
+    'Proceed at your own risk.'
+  ];
+}
 
 function Button88({ badge, active, onPick }: Readonly<{ badge: Badge; active: boolean; onPick: () => void }>) {
   return (
@@ -122,28 +186,6 @@ function Button88({ badge, active, onPick }: Readonly<{ badge: Badge; active: bo
   );
 }
 
-const originals = new WeakMap<Text, string>();
-
-/* Y2K works on the live text, so any year on the page rolls over the way they feared it would. */
-function breakYears(on: boolean) {
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-  const hits: Text[] = [];
-  while (walker.nextNode()) {
-    const node = walker.currentNode as Text;
-    if (node.parentElement?.closest('[data-y2k-safe]')) continue;
-    if (on ? /\b(19|20)\d{2}\b/.test(node.data) : node.data.includes('19100')) hits.push(node);
-  }
-  hits.forEach((n) => {
-    if (on) {
-      originals.set(n, n.data);
-      n.data = n.data.replace(/\b(19|20)\d{2}\b/g, '19100');
-    } else {
-      const original = originals.get(n);
-      if (original) n.data = original;
-    }
-  });
-}
-
 export default function Badges() {
   const [modes, setModes] = useState<Record<string, boolean>>({});
   const [dialog, setDialog] = useState<string | null>(null);
@@ -151,14 +193,13 @@ export default function Badges() {
   useEffect(() => {
     const root = document.documentElement;
     root.toggleAttribute('data-letterbox', !!modes.res);
-  }, [modes.res]);
-
-  useEffect(() => {
-    breakYears(!!modes.y2k);
-  }, [modes.y2k]);
+    root.toggleAttribute('data-comic', !!modes.comic);
+    root.toggleAttribute('data-blink', !!modes.blink);
+  }, [modes.res, modes.comic, modes.blink]);
 
   const pick = (key: string) => {
     if (MODES.has(key)) setModes((m) => ({ ...m, [key]: !m[key] }));
+    else if (ACTIONS[key]) ACTIONS[key]();
     else setDialog(key);
   };
 
@@ -173,7 +214,7 @@ export default function Badges() {
       </div>
 
       {open ? (
-        <div className='fixed inset-0 z-[85] flex items-center justify-center bg-black/60 p-4' data-y2k-safe>
+        <div className='fixed inset-0 z-[85] flex items-center justify-center bg-black/60 p-4'>
           <div className='edge theme-shadow w-full max-w-[440px] bg-panel'>
             <p className='head-gradient m-0 flex items-center justify-between px-3 py-1.5 font-display text-sm font-bold'>
               {open.title}
@@ -182,7 +223,7 @@ export default function Badges() {
               </button>
             </p>
             <pre className='m-0 overflow-x-auto p-4 font-mono text-[0.78rem] whitespace-pre-wrap text-ink'>
-              {open.lines.join('\n')}
+              {open.lines().join('\n')}
             </pre>
           </div>
         </div>

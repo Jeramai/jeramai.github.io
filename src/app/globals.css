@@ -57,8 +57,8 @@
   button:hover,
   [role='button']:hover {
     cursor:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' shape-rendering='crispEdges'%3E%3Cpath d='M12 3h4v12h-4zM8 9h4v6H8zM16 9h4v6h-4zM20 12h4v3h-4zM4 12h4v9H4zM8 21h16v4H8zM20 15h4v6h-4z' fill='%23000'/%3E%3Cpath d='M13 4h2v11h-2zM9 10h2v5H9zM17 10h2v5h-2zM21 13h2v2h-2zM5 13h2v7H5zM9 22h14v2H9z' fill='%23fff'/%3E%3C/svg%3E")
-        8 3,
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' shape-rendering='crispEdges'%3E%3Cpath d='M9 3h5v11H9zM14 9h4v5h-4zM18 11h4v3h-4zM5 14h4v6H5zM9 14h13v11H9z' fill='%23000'/%3E%3Cpath d='M10 4h3v10h-3zM15 10h2v4h-2zM19 12h2v2h-2zM6 15h2v4H6zM10 15h11v9H10z' fill='%23fff'/%3E%3C/svg%3E")
+        11 3,
       pointer;
   }
 
@@ -191,6 +191,22 @@
   margin: 0 auto;
   border-left: 2px solid var(--border);
   border-right: 2px solid var(--border);
+}
+
+/* The blink tag, restored to the web. Badges are spared so you can switch it off. */
+[data-blink] h1,
+[data-blink] h2,
+[data-blink] h3,
+[data-blink] b,
+[data-blink] strong,
+[data-blink] u {
+  animation: blink 1s steps(2, start) infinite;
+}
+
+/* Comic Sans approved, and now enforced. */
+[data-comic] body,
+[data-comic] body * {
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

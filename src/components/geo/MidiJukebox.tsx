@@ -8,6 +8,8 @@ import { useEffect, useMemo, useState } from 'react';
 
 const BARS = 14;
 
+export const JUKEBOX_PLAY = 'jf:play';
+
 export default function MidiJukebox() {
   const { theme } = useTheme();
   const [box, setBox] = useState<Jukebox | null>(null);
@@ -27,7 +29,6 @@ export default function MidiJukebox() {
     return () => box.stop();
   }, [box]);
 
-  // The WebAudio engine is only fetched once someone actually asks for sound.
   const toggle = async () => {
     if (box) {
       if (box.playing) {
@@ -57,6 +58,17 @@ export default function MidiJukebox() {
     setLoading(false);
     setPlaying(true);
   };
+
+  // The MIDI POWERED badge starts the player, so the click stays inside the user gesture.
+  useEffect(() => {
+    const onAsk = () => {
+      if (!playing) void toggle();
+    };
+    window.addEventListener(JUKEBOX_PLAY, onAsk);
+    return () => window.removeEventListener(JUKEBOX_PLAY, onAsk);
+  });
+
+  // The WebAudio engine is only fetched once someone actually asks for sound.
 
   return (
     <Panel title='MIDI Jukebox'>
