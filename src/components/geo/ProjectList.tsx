@@ -8,6 +8,14 @@ export default function ProjectList() {
         <article key={p.title} className='edge-thin grid gap-3.5 bg-panel-2 p-3 sm:grid-cols-[148px_minmax(0,1fr)]'>
           <div className='relative h-24 w-full'>
             <Image src={p.image} alt='' fill sizes='148px' className='edge-thin object-cover' />
+            {p.aiImage ? (
+              <span
+                title='This image is generated using AI.'
+                className='head-gradient absolute top-0 right-1 px-1.5 py-0.5 text-[0.65rem] font-bold'
+              >
+                AI
+              </span>
+            ) : null}
           </div>
 
           <div className='min-w-0'>
