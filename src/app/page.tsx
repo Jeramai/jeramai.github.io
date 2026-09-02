@@ -1,3 +1,4 @@
+import Badges from '@/components/geo/Badges';
 import Marquee from '@/components/geo/Marquee';
 import Masthead from '@/components/geo/Masthead';
 import Panel from '@/components/geo/Panel';
@@ -92,6 +93,10 @@ export default function Home() {
               <ProjectList />
             </Panel>
           </main>
+        </div>
+
+        <div className='mt-5 mb-1'>
+          <Badges />
         </div>
 
         <footer className='mt-4 border-t-2 border-edge pt-3 text-center text-[0.82rem] text-ink-dim'>
