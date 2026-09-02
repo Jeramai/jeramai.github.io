@@ -1,11 +1,11 @@
 import {
-  Clock,
   Color,
   Matrix4,
   Mesh,
   RepeatWrapping,
   ShaderMaterial,
   Texture,
+  Timer,
   UniformsLib,
   UniformsUtils,
   Vector2,
@@ -195,8 +195,6 @@ class WaterMesh extends Mesh {
   constructor(geometry: any, options: WaterOptions = {}) {
     super(geometry);
 
-    const scope = this;
-
     const color = options.color !== undefined ? new Color(options.color) : new Color(0xffffff);
     const textureWidth = options.textureWidth ?? 512;
     const textureHeight = options.textureHeight ?? 512;
@@ -218,7 +216,7 @@ class WaterMesh extends Mesh {
     const cycle = 0.15; // a cycle of a flow map phase
     const halfCycle = cycle * 0.5;
     const textureMatrix = new Matrix4();
-    const clock = new Clock();
+    const timer = new Timer();
 
     // internal components
 
@@ -304,17 +302,18 @@ class WaterMesh extends Mesh {
 
     // functions
 
-    function updateTextureMatrix(camera: any) {
+    const updateTextureMatrix = (camera: any) => {
       textureMatrix.set(0.5, 0.0, 0.0, 0.5, 0.0, 0.5, 0.0, 0.5, 0.0, 0.0, 0.5, 0.5, 0.0, 0.0, 0.0, 1.0);
 
       textureMatrix.multiply(camera.projectionMatrix);
       textureMatrix.multiply(camera.matrixWorldInverse);
-      textureMatrix.multiply(scope.matrixWorld);
-    }
+      textureMatrix.multiply(this.matrixWorld);
+    };
 
-    function updateFlow() {
-      const delta = clock.getDelta();
-      const config = (scope.material as any).uniforms['config'];
+    const updateFlow = () => {
+      timer.update();
+      const delta = timer.getDelta();
+      const config = (this.material as any).uniforms['config'];
 
       config.value.x += flowSpeed * delta; // flowMapOffset0
       config.value.y = config.value.x + halfCycle; // flowMapOffset1
@@ -329,23 +328,23 @@ class WaterMesh extends Mesh {
       } else if (config.value.y >= cycle) {
         config.value.y = config.value.y - cycle;
       }
-    }
+    };
 
     //
 
-    this.onBeforeRender = function (renderer, scene, camera) {
+    this.onBeforeRender = (renderer, scene, camera) => {
       updateTextureMatrix(camera);
       updateFlow();
 
-      scope.visible = false;
+      this.visible = false;
 
-      reflector.matrixWorld.copy(scope.matrixWorld);
-      refractor.matrixWorld.copy(scope.matrixWorld);
+      reflector.matrixWorld.copy(this.matrixWorld);
+      refractor.matrixWorld.copy(this.matrixWorld);
 
       (reflector as any).onBeforeRender(renderer, scene, camera);
       (refractor as any).onBeforeRender(renderer, scene, camera);
 
-      scope.visible = true;
+      this.visible = true;
     };
   }
 }

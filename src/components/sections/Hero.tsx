@@ -5,7 +5,15 @@ import WaterSurface from '@/components/WaterSurface';
 import { Environment, Preload } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
 import Link from 'next/link';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useSyncExternalStore } from 'react';
+
+const MOBILE_QUERY = '(max-width: 767px)';
+
+const subscribeToMobile = (onChange: () => void) => {
+  const query = window.matchMedia(MOBILE_QUERY);
+  query.addEventListener('change', onChange);
+  return () => query.removeEventListener('change', onChange);
+};
 
 export default function Hero() {
   return (
@@ -41,25 +49,11 @@ export default function Hero() {
   );
 }
 function HeroCanvas() {
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-
-  useEffect(() => {
-    // Check if window is defined (client-side)
-    if (typeof window !== 'undefined') {
-      // Initial check
-      setIsMobile(window.innerWidth < 768);
-
-      // Add resize listener
-      const handleResize = () => {
-        setIsMobile(window.innerWidth < 768);
-      };
-
-      window.addEventListener('resize', handleResize);
-
-      // Cleanup
-      return () => window.removeEventListener('resize', handleResize);
-    }
-  }, []);
+  const isMobile = useSyncExternalStore(
+    subscribeToMobile,
+    () => window.matchMedia(MOBILE_QUERY).matches,
+    () => false
+  );
 
   useFrame(({ camera, clock }) => {
     camera.position.x = Math.sin(clock.elapsedTime * 0.025) * 5;
