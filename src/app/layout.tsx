@@ -1,5 +1,8 @@
 import AnimatedFavicon from '@/components/geo/AnimatedFavicon';
+import Bsod from '@/components/geo/Bsod';
 import CursorTrail from '@/components/geo/CursorTrail';
+import Screensaver from '@/components/geo/Screensaver';
+import SecretCodes from '@/components/geo/SecretCodes';
 import { THEME_PARAM } from '@/lib/theme-keys';
 import themes from '@/lib/themes.generated';
 import type { Metadata } from 'next';
@@ -41,6 +44,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {children}
         <CursorTrail />
         <AnimatedFavicon />
+        <SecretCodes />
+        <Screensaver />
+        <Bsod />
       </body>
     </html>
   );

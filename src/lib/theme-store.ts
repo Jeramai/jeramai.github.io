@@ -1,21 +1,59 @@
 'use client';
 
 import { THEME_PARAM } from '@/lib/theme-keys';
-import themes, { type Theme } from '@/lib/themes.generated';
+import themes, { secretTheme, type Theme } from '@/lib/themes.generated';
 import { useEffect, useSyncExternalStore } from 'react';
 
 export { THEME_PARAM } from '@/lib/theme-keys';
 
+const SEEN_KEY = 'jf_seen';
 const listeners = new Set<() => void>();
+
+const all = [...themes, secretTheme];
+
+function readSeen(): string[] {
+  try {
+    const raw = localStorage.getItem(SEEN_KEY);
+    return raw ? (JSON.parse(raw) as string[]) : [];
+  } catch {
+    return [];
+  }
+}
+
+function recordSeen(id: string) {
+  try {
+    const seen = new Set(readSeen());
+    if (seen.has(id)) return;
+    seen.add(id);
+    localStorage.setItem(SEEN_KEY, JSON.stringify([...seen]));
+  } catch {
+    /* private mode, the tally just does not persist */
+  }
+}
+
+export function seenCount() {
+  return readSeen().filter((id) => id !== secretTheme.id).length;
+}
+
+export function hasFoundSecret() {
+  return readSeen().includes(secretTheme.id);
+}
 
 function subscribe(onChange: () => void) {
   listeners.add(onChange);
   return () => listeners.delete(onChange);
 }
 
+export const subscribeThemes = subscribe;
+
 /* The inline bootstrap script paints <html data-theme> before hydration, so the DOM is the source of truth. */
 function getSnapshot() {
   return document.documentElement.dataset.theme ?? themes[0].id;
+}
+
+export function markCurrentSeen() {
+  recordSeen(getSnapshot());
+  listeners.forEach((l) => l());
 }
 
 function getServerSnapshot() {
@@ -24,6 +62,7 @@ function getServerSnapshot() {
 
 export function setTheme(id: string) {
   document.documentElement.dataset.theme = id;
+  recordSeen(id);
   // Keep the address bar in step, so whatever you are looking at is what you share.
   try {
     const url = new URL(window.location.href);
@@ -46,7 +85,7 @@ type ThemeControls = {
 
 export function useTheme(): ThemeControls {
   const id = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-  const found = themes.findIndex((t) => t.id === id);
+  const found = all.findIndex((t) => t.id === id);
   const index = found < 0 ? 0 : found;
 
   const step = (by: number) => setTheme(themes[(index + by + themes.length) % themes.length].id);
@@ -58,8 +97,8 @@ export function useTheme(): ThemeControls {
   };
 
   return {
-    theme: themes[index],
-    index,
+    theme: all[index],
+    index: Math.min(index, themes.length - 1),
     total: themes.length,
     shuffle,
     prev: () => step(-1),

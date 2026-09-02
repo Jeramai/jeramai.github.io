@@ -111,4 +111,7 @@ const themes: Theme[] = [
   { id: 't99', name: "PLATFORM SHOE", mood: 'funk', arch: 'paper', seed: 20426, crt: false },
 ];
 
+/* Not in the shuffle rotation. Reachable by typing 1997, or by ?theme=t1997. */
+export const secretTheme: Theme = { id: 't1997', name: "1997", mood: 'retro', arch: 'frame', seed: 1997, crt: false };
+
 export default themes;

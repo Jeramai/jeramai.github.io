@@ -2944,6 +2944,34 @@
   --font-body: 'Times New Roman', Times, serif;
 }
 
+[data-theme='t1997'] {
+  --bg: #008080;
+  --bg-image: none;
+  --bg-size: auto;
+  --panel: #c0c0c0;
+  --panel-2: #b0b0b0;
+  --ink: #000000;
+  --ink-dim: #404040;
+  --accent: #000080;
+  --accent-2: #7b0060;
+  --hot: #a80000;
+  --link: #0000c0;
+  --link-visited: #5c0070;
+  --border: #5a5a5a;
+  --head-a: #0a5c9e;
+  --head-b: #000080;
+  --head-ink: #ffffff;
+  --marquee-bg: #000080;
+  --marquee-ink: #ffffff;
+  --marquee-sep: #00e0e0;
+  --border-w: 2px;
+  --radius: 0px;
+  --shadow: inset 2px 2px 0 #ffffff, inset -2px -2px 0 #5a5a5a;
+  --head-spacing: 0.04em;
+  --font-display: 'Times New Roman', Times, serif;
+  --font-body: 'Times New Roman', Times, serif;
+}
+
 body {
   background-size: var(--bg-size, auto);
 }

@@ -1,5 +1,6 @@
 import MidiJukebox from '@/components/geo/MidiJukebox';
 import Panel from '@/components/geo/Panel';
+import ThemesSeen from '@/components/geo/ThemesSeen';
 
 const LINKS = [
   { href: '#welcome', label: 'Home', dot: '#ff2020' },
@@ -55,6 +56,8 @@ export default function Rail() {
           ))}
         </ul>
       </Panel>
+
+      <ThemesSeen />
 
       <MidiJukebox />
     </div>
