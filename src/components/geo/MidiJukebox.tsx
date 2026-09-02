@@ -2,7 +2,7 @@
 
 import Panel from '@/components/geo/Panel';
 import { compose } from '@/lib/music/compose';
-import { Jukebox } from '@/lib/music/player';
+import type { Jukebox } from '@/lib/music/player';
 import { useTheme } from '@/lib/theme-store';
 import { useEffect, useMemo, useState } from 'react';
 
@@ -10,8 +10,9 @@ const BARS = 14;
 
 export default function MidiJukebox() {
   const { theme } = useTheme();
-  const [box] = useState<Jukebox | null>(() => (typeof window === 'undefined' ? null : new Jukebox()));
+  const [box, setBox] = useState<Jukebox | null>(null);
   const [playing, setPlaying] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [levels, setLevels] = useState<number[]>(() => Array<number>(BARS).fill(0));
 
   const track = useMemo(() => compose(theme.seed, theme.mood, theme.name), [theme.seed, theme.mood, theme.name]);
@@ -23,7 +24,26 @@ export default function MidiJukebox() {
 
   useEffect(() => {
     if (!box) return;
-    const off = box.onStep((step, power) => {
+    return () => box.stop();
+  }, [box]);
+
+  // The WebAudio engine is only fetched once someone actually asks for sound.
+  const toggle = async () => {
+    if (box) {
+      if (box.playing) {
+        box.stop();
+        setPlaying(false);
+      } else {
+        await box.start();
+        setPlaying(true);
+      }
+      return;
+    }
+
+    setLoading(true);
+    const { Jukebox: Engine } = await import('@/lib/music/player');
+    const engine = new Engine();
+    engine.onStep((step, power) => {
       setLevels((prev) => {
         if (step < 0) return Array<number>(BARS).fill(0);
         const next = prev.map((v) => v * 0.72);
@@ -31,21 +51,11 @@ export default function MidiJukebox() {
         return next;
       });
     });
-    return () => {
-      off();
-      box.stop();
-    };
-  }, [box]);
-
-  const toggle = async () => {
-    if (!box) return;
-    if (box.playing) {
-      box.stop();
-      setPlaying(false);
-    } else {
-      await box.start();
-      setPlaying(true);
-    }
+    engine.setTrack(track);
+    setBox(engine);
+    await engine.start();
+    setLoading(false);
+    setPlaying(true);
   };
 
   return (
@@ -68,7 +78,7 @@ export default function MidiJukebox() {
 
       <div className='flex items-center gap-2'>
         <button type='button' onClick={toggle} className='geo-btn' aria-pressed={playing}>
-          {playing ? '■ Stop' : '▶ Play'}
+          {loading ? '… Loading' : playing ? '■ Stop' : '▶ Play'}
         </button>
         <label className='flex flex-1 items-center gap-1.5 text-[0.75rem] text-ink-dim'>
           Vol
