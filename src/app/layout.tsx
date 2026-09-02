@@ -1,3 +1,5 @@
+import AnimatedFavicon from '@/components/geo/AnimatedFavicon';
+import CursorTrail from '@/components/geo/CursorTrail';
 import { THEME_PARAM } from '@/lib/theme-keys';
 import themes from '@/lib/themes.generated';
 import type { Metadata } from 'next';
@@ -35,7 +37,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <script dangerouslySetInnerHTML={{ __html: bootstrap }} />
       </head>
-      <body className='antialiased'>{children}</body>
+      <body className='antialiased'>
+        {children}
+        <CursorTrail />
+        <AnimatedFavicon />
+      </body>
     </html>
   );
 }
