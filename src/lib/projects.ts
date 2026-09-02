@@ -78,8 +78,6 @@ const projects: Project[] = [
     description:
       'A chatbot was developed and implemented to optimize and streamline workflows within the Dutch Tax Department by automating routine inquiries and providing instant access to information, enhancing efficiency and reducing the workload on human agents.',
     image: '/projects/chatbot.jpg',
-    github: '',
-    demo: '',
     tags: ['Java'],
     aiImage: true
   },
