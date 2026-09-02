@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 
 export const BSOD_EVENT = 'jf:bsod';
 
+const KEY_GRACE_MS = 2000;
+const TAP_GRACE_MS = 4000;
+
 export default function Bsod() {
   const [crashed, setCrashed] = useState(false);
 
@@ -13,13 +16,18 @@ export default function Bsod() {
     return () => window.removeEventListener(BSOD_EVENT, onCrash);
   }, []);
 
-  // "Press any key to continue" should mean it, so the joke does not become a trap.
+  // Keys recover after a beat, so the click burst that caused the crash cannot also skip it.
+  // A pointer works too, but later, for anyone without a keyboard.
   useEffect(() => {
     if (!crashed) return;
     const recover = () => setCrashed(false);
-    window.addEventListener('keydown', recover);
-    window.addEventListener('pointerdown', recover);
+
+    const keyTimer = window.setTimeout(() => window.addEventListener('keydown', recover), KEY_GRACE_MS);
+    const tapTimer = window.setTimeout(() => window.addEventListener('pointerdown', recover), TAP_GRACE_MS);
+
     return () => {
+      window.clearTimeout(keyTimer);
+      window.clearTimeout(tapTimer);
       window.removeEventListener('keydown', recover);
       window.removeEventListener('pointerdown', recover);
     };
