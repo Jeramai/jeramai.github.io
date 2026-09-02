@@ -1,3 +1,4 @@
+import Badges from '@/components/geo/Badges';
 import MidiJukebox from '@/components/geo/MidiJukebox';
 import Panel from '@/components/geo/Panel';
 import ThemesSeen from '@/components/geo/ThemesSeen';
@@ -60,6 +61,10 @@ export default function Rail() {
       <ThemesSeen />
 
       <MidiJukebox />
+
+      <Panel title='This Site Is'>
+        <Badges />
+      </Panel>
     </div>
   );
 }
