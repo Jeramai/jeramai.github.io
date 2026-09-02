@@ -14,7 +14,8 @@ const BANNER = `<!--
 
   Hello, person who reads the source. You are my kind of visitor.
 
-  Yes, this is Next.js under a 1999 costume. The 99 themes are not
+  Yes, this is Next.js under a 1997 costume. 1997 is not a typo, and
+  neither is the Netscape line on the page. The 99 themes are not
   hand-written: tools/make-themes.mjs crosses 11 moods with 14 layout
   archetypes and refuses to build if any colour pair misses its
   contrast target. Worst case in the whole set is 4.6:1.
