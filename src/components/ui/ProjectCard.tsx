@@ -33,8 +33,8 @@ export default function ProjectCard({ project }: Readonly<{ project: Project }>)
           <div className='flex flex-wrap gap-2 mt-4'>
             {project.tags
               .toSorted((a, b) => a.localeCompare(b))
-              .map((tag, index) => (
-                <span key={index} className='px-2 py-1 text-xs rounded-full bg-primary/10 text-primary/70'>
+              .map((tag) => (
+                <span key={tag} className='px-2 py-1 text-xs rounded-full bg-primary/10 text-primary/70'>
                   {tag}
                 </span>
               ))}

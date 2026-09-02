@@ -23,7 +23,7 @@ export default function About() {
         'SCSS',
         'Three.js',
         'Flutter'
-      ].sort((a, b) => a.localeCompare(b))
+      ].toSorted((a, b) => a.localeCompare(b))
     )
   ];
 
@@ -58,8 +58,8 @@ export default function About() {
             with new technologies.`}
             </p>
             <div className='flex flex-wrap gap-4'>
-              {skills?.map((tag, index) => (
-                <Skill key={index}>{tag}</Skill>
+              {skills?.map((tag) => (
+                <Skill key={tag}>{tag}</Skill>
               ))}
             </div>
           </div>
