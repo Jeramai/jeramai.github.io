@@ -6,5 +6,5 @@
   "semi": true,
   "tabWidth": 2,
   "trailingComma": "none",
-  "ignorePatterns": [".github", ".next", "out", "package-lock.json"]
+  "ignorePatterns": [".github", ".next", "out", "src/app/themes.css", "src/lib/themes.generated.ts"]
 }
