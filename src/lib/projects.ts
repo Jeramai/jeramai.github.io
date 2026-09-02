@@ -3,6 +3,16 @@ import Project from '@/types/project';
 // Sample Projects Data
 const projects: Project[] = [
   {
+    title: 'nestjs-doctor',
+    category: 'Open source',
+    description:
+      'A deterministic static-analysis CLI for NestJS that catches the mistakes AI code assistants make. I contributed inline rule suppression, so a team can silence a rule at the exact line instead of switching it off for the whole project.',
+    image: '/projects/nestjs-doctor.png',
+    demo: 'https://nestjs.doctor',
+    github: 'https://github.com/RoloBits/nestjs-doctor',
+    tags: ['TypeScript', 'Static analysis', 'Open source']
+  },
+  {
     title: 'Cast Anything',
     category: 'Full Stack',
     description:

@@ -1,3 +1,4 @@
+import MidiJukebox from '@/components/geo/MidiJukebox';
 import Panel from '@/components/geo/Panel';
 
 const LINKS = [
@@ -30,6 +31,8 @@ export default function Rail() {
           </ul>
         </nav>
       </Panel>
+
+      <MidiJukebox />
     </div>
   );
 }

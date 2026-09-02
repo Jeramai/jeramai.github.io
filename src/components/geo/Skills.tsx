@@ -34,8 +34,12 @@ const GROUPS: { label: string; items: string[] }[] = [
     items: ['NestJS', 'Node.js', 'Laravel', 'PHP', 'Python', 'MySQL', 'Zod', 'REST and BFF design']
   },
   {
+    label: 'Toolchain',
+    items: ['Bun', 'Zig', 'oxlint', 'oxfmt', 'Playwright', 'CI gates', 'Monorepos']
+  },
+  {
     label: 'Running it in production',
-    items: ['Sentry', 'OpenTelemetry', 'Ably realtime', 'Feature flags', 'CI gates', 'oxlint', 'oxfmt']
+    items: ['Sentry', 'OpenTelemetry', 'Ably realtime', 'Feature flags']
   }
 ];
 
