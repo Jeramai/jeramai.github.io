@@ -40,9 +40,11 @@ export default function Home() {
         <Masthead />
 
         <div className='grid items-start gap-4 md:grid-cols-[250px_minmax(0,1fr)]'>
-          <Rail />
+          <div className='order-2 md:order-1'>
+            <Rail />
+          </div>
 
-          <main className='grid min-w-0 gap-4'>
+          <main className='order-1 grid min-w-0 gap-4 md:order-2'>
             <Panel id='welcome' title='Welcome!!!'>
               <p className='my-2 text-center font-serif text-[clamp(1.3rem,3.2vw,2rem)] font-bold italic text-accent-2'>
                 &ldquo;Welcome to my website.&rdquo;
@@ -108,7 +110,7 @@ export default function Home() {
               <ul className='m-0 list-disc pl-5'>
                 {COOL_LINKS.map((l) => (
                   <li key={l.href} className='mb-1.5'>
-                    <a href={l.href} target='_blank' rel='noopener noreferrer'>
+                    <a href={l.href} target='_blank' rel='noopener noreferrer' className='inline-block py-1'>
                       {l.label}
                     </a>
                   </li>

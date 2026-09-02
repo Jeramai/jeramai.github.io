@@ -19,7 +19,7 @@ export default function Rail() {
           <ul className='m-0 list-none p-0'>
             {LINKS.map((l) => (
               <li key={l.href} className='mt-2 first:mt-0'>
-                <a href={l.href} className='flex items-center gap-2 font-bold underline'>
+                <a href={l.href} className='flex min-h-6 items-center gap-2 py-1 font-bold underline'>
                   <span
                     className='size-2.5 flex-none rounded-full [box-shadow:inset_-2px_-2px_0_#0006]'
                     style={{ background: l.dot }}

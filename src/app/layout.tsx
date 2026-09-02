@@ -11,8 +11,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://jeramai.github.io',
+    siteName: 'Jeram.ai',
     title: 'Jeramai Faber - My Home Page on the World Wide Web',
-    description: 'Senior front-end developer. React, Next.js, React Native and AI. Under construction forever.'
+    description: 'Senior front-end developer. React, Next.js, React Native and AI. Under construction forever.',
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'Jeramai Faber, under construction forever' }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Jeramai Faber - My Home Page on the World Wide Web',
+    description: 'Senior front-end developer. React, Next.js, React Native and AI. Under construction forever.',
+    images: ['/og.png']
   }
 };
 

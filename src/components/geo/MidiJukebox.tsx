@@ -77,7 +77,7 @@ export default function MidiJukebox() {
             min={0}
             max={100}
             defaultValue={35}
-            className='w-full accent-[var(--accent)]'
+            className='h-6 w-full accent-[var(--accent)]'
             onChange={(e) => box?.setVolume(Number(e.target.value) / 100)}
           />
         </label>
