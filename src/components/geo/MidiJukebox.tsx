@@ -66,11 +66,11 @@ export default function MidiJukebox() {
         {track.bpm} BPM &middot; {theme.mood}
       </p>
 
-      <div className='flex h-12 items-end gap-1 border-2 border-edge bg-black p-1' aria-hidden='true'>
+      <div className='edge-thin flex h-12 items-end gap-1 bg-panel-2 p-1' aria-hidden='true'>
         {levels.map((v, i) => (
           <span
             key={`bar-${BARS - i}`}
-            className='flex-1 bg-[#22ff66] transition-[height] duration-75'
+            className='flex-1 bg-accent transition-[height] duration-75'
             style={{ height: `${Math.max(4, v * 100)}%` }}
           />
         ))}

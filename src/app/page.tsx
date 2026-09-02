@@ -21,13 +21,6 @@ const FACTS: [string, string][] = [
 export default function Home() {
   return (
     <>
-      <a
-        href='#welcome'
-        className='sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-accent focus:px-3 focus:py-2 focus:text-head-ink'
-      >
-        Skip to content
-      </a>
-
       <Marquee />
 
       <div className='mx-auto max-w-[1180px] px-3 pb-5'>
