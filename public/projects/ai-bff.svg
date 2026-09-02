@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" width="480" height="300" role="img">
+  <rect width="480" height="300" fill="#0b0f14" />
+  <g stroke="#1e2b36" stroke-width="1">
+    <path d="M0 60h480M0 120h480M0 180h480M0 240h480M80 0v300M160 0v300M240 0v300M320 0v300M400 0v300" />
+  </g>
+
+  <g font-family="'Courier New',monospace" font-size="15" font-weight="700" text-anchor="middle">
+    <rect x="26" y="112" width="104" height="60" fill="#101820" stroke="#59b6ff" stroke-width="2" />
+    <text x="78" y="140" fill="#59b6ff">APP</text>
+    <text x="78" y="158" fill="#6d818f" font-size="11" font-weight="400">next.js</text>
+
+    <rect x="188" y="98" width="112" height="88" fill="#101820" stroke="#ffd400" stroke-width="2" />
+    <text x="244" y="130" fill="#ffd400">BFF</text>
+    <text x="244" y="148" fill="#6d818f" font-size="11" font-weight="400">nestjs</text>
+    <text x="244" y="166" fill="#6d818f" font-size="11" font-weight="400">zod · cache</text>
+
+    <rect x="358" y="112" width="98" height="60" fill="#101820" stroke="#c07bff" stroke-width="2" />
+    <text x="407" y="140" fill="#c07bff">LLM</text>
+    <text x="407" y="158" fill="#6d818f" font-size="11" font-weight="400">claude</text>
+  </g>
+
+  <g stroke="#59b6ff" stroke-width="3" fill="none">
+    <path d="M132 132h50" />
+    <path d="M174 124l12 8-12 8z" fill="#59b6ff" stroke="none" />
+  </g>
+  <g stroke="#ffd400" stroke-width="3" fill="none">
+    <path d="M186 156h-52" />
+    <path d="M144 148l-12 8 12 8z" fill="#ffd400" stroke="none" />
+  </g>
+  <g stroke="#c07bff" stroke-width="3" fill="none">
+    <path d="M302 132h50" />
+    <path d="M344 124l12 8-12 8z" fill="#c07bff" stroke="none" />
+    <path d="M356 156h-52" />
+    <path d="M314 148l-12 8 12 8z" fill="#c07bff" stroke="none" />
+  </g>
+
+  <text x="24" y="252" font-family="'Courier New',monospace" font-size="14" fill="#8aa0ad">
+    schema-validated · cached · rate limited
+  </text>
+  <text x="24" y="274" font-family="'Courier New',monospace" font-size="14" fill="#6d818f">
+    a model, treated like any other dependency
+  </text>
+</svg>

@@ -14,7 +14,8 @@ const FACTS: [string, string][] = [
   ['Main stack', 'React, Next.js, React Native, Expo, TypeScript, Tailwind'],
   ['Also does', 'AI features, agent workflows, computer vision'],
   ['Still does', 'Back-end, when the front-end needs one'],
-  ['Location', 'Eindhoven, The Netherlands']
+  ['Location', 'Eindhoven, The Netherlands'],
+  ['Away from a screen', 'On a skateboard']
 ];
 
 export default function Home() {
@@ -65,6 +66,12 @@ export default function Home() {
                 an AI backend-for-frontend serving real product features, agent-driven automation in production, and a
                 pure-TypeScript vision pipeline that turns a phone camera into verified, counted reps. And I <b>build using it</b>{' '}
                 &mdash; agent-assisted development is how I ship every day, not a demo I tried once.
+              </p>
+              <p>
+                I have been interested in <b className='text-accent'>AR and VR</b> since long before it was a line on a job spec,
+                which is how I ended up spending years on 3D configurators and WebGL. Away from a screen I am usually{' '}
+                <b className='text-accent-2'>on a skateboard</b> &mdash; the other discipline where you learn by failing in public
+                and getting back up.
               </p>
               <p className='text-ink-dim'>
                 This whole page is an example. The 99 themes are not hand-made &mdash; a generator combines 11 moods with 14

@@ -1,7 +1,20 @@
 const GROUPS: { label: string; items: string[] }[] = [
   {
     label: 'Front-end',
-    items: ['React', 'Next.js', 'React Native', 'Expo', 'TypeScript', 'Tailwind CSS', 'NativeWind', 'SCSS', 'Three.js', 'Motion']
+    items: [
+      'React',
+      'Next.js',
+      'React Native',
+      'Expo',
+      'TypeScript',
+      'Tailwind CSS',
+      'NativeWind',
+      'SCSS',
+      'Three.js',
+      'WebGL',
+      'AR/VR',
+      'Motion'
+    ]
   },
   {
     label: 'Craft',

@@ -3,6 +3,22 @@ import Project from '@/types/project';
 // Sample Projects Data
 const projects: Project[] = [
   {
+    title: 'Camera rep engine',
+    category: 'AI and vision',
+    description:
+      'A pure-TypeScript engine that turns a phone camera into a verified rep counter. Pose estimation runs on device with TFLite, and the engine decides what counts as a real repetition rather than trusting raw keypoints. No camera and no clock inside it, so it is testable without either.',
+    image: '/projects/rep-engine.svg',
+    tags: ['TypeScript', 'TensorFlow.js', 'TFLite', 'Vision Camera', 'Closed source']
+  },
+  {
+    title: 'AI backend-for-frontend',
+    category: 'AI and vision',
+    description:
+      'A NestJS service that puts LLM features in front of a real product: recommendations, extraction and search over live inventory. Schema-validated responses, caching and rate limits, so the front-end can treat a model like any other dependency.',
+    image: '/projects/ai-bff.svg',
+    tags: ['NestJS', 'Anthropic SDK', 'Zod', 'Closed source']
+  },
+  {
     title: 'nestjs-doctor',
     category: 'Open source',
     description:
@@ -31,40 +47,13 @@ const projects: Project[] = [
     tags: ['JavaScript', 'Chrome Extension']
   },
   {
-    title: 'Virtutec Platform',
+    title: 'Virtutec: SalCon, ProCon, SerCon',
     category: 'Full Stack',
     description:
-      'Virtutec streamlines business processes in sales, production, and service by creating digital applications (VR, AR, apps) from 3D data, enhancing visualization and interaction.',
-    image: '/projects/virtutec.png',
-    demo: 'https://virtutec.io',
-    tags: ['Laravel', 'Next.js', 'Tailwind CSS']
-  },
-  {
-    title: 'SalCon',
-    category: 'Full Stack',
-    description:
-      "SalCon, Virtutec's 3D sales configurator, improves the sales process and customer experience by enabling real-time product visualization and configuration.",
+      'A 3D platform for manufacturers, and the three products built on it: a sales configurator that prices a machine as you build it, step-by-step visual work instructions on the factory floor, and a spare-part finder that lets a customer click the part they need. Laravel and Next.js behind a Three.js viewer.',
     image: '/projects/salcon.png',
     demo: 'https://viewer.salcon.live/viewer/demo',
-    tags: ['Laravel', 'Next.js', 'Tailwind CSS', 'Three.js']
-  },
-  {
-    title: 'ProCon',
-    category: 'Full Stack',
-    description:
-      'Procon optimizes production by providing visual step-by-step instructions, ensuring process consistency, reducing errors, and improving operator efficiency.',
-    image: '/projects/procon.png',
-    demo: 'https://app.procon.live/viewer/demo',
-    tags: ['Laravel', 'Next.js', 'Tailwind CSS', 'Three.js']
-  },
-  {
-    title: 'SerCon',
-    category: 'Full Stack',
-    description:
-      'SerCon streamlines replacement part identification and ordering, enhancing customer service and reducing errors through automated processes and a comprehensive database.',
-    image: '/projects/sercon.png',
-    demo: 'https://app.sercon.live/viewer/demo',
-    tags: ['Laravel', 'Next.js', 'Tailwind CSS', 'Three.js', 'Ionic']
+    tags: ['Laravel', 'Next.js', 'Three.js', 'Ionic', 'AR/VR']
   },
   {
     title: 'Automated Model Converter',

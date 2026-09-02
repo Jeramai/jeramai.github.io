@@ -1,9 +1,10 @@
 'use client';
 
-import { useTheme } from '@/lib/theme-store';
+import { useTheme, useThemeKeys } from '@/lib/theme-store';
 
 export default function Masthead() {
   const { theme, index, total, shuffle, prev, next } = useTheme();
+  useThemeKeys();
 
   return (
     <header className='px-0 pt-5 pb-2 text-center'>
