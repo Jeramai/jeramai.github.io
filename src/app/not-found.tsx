@@ -1,4 +1,5 @@
 import Marquee from '@/components/geo/Marquee';
+import Image from 'next/image';
 import Link from 'next/link';
 import Panel from '@/components/geo/Panel';
 import type { Metadata } from 'next';
@@ -38,6 +39,17 @@ export default function NotFound() {
           <hr className='rainbow mx-auto my-2.5 mb-5 h-2 max-w-3xl border-0' />
         </header>
 
+        <div className='mx-auto mb-4 max-w-[480px]'>
+          <Image
+            src='/404-skate.svg'
+            alt='A pixel-art skateboarder on their back, board rolling away'
+            width={480}
+            height={280}
+            className='edge theme-shadow w-full'
+            priority
+          />
+        </div>
+
         <main className='grid gap-4'>
           <Panel title='What Went Wrong'>
             <p>
@@ -51,18 +63,6 @@ export default function NotFound() {
                 </li>
               ))}
             </ul>
-          </Panel>
-
-          <Panel title='While You Are Here'>
-            <p>
-              I am Jeramai, a senior front-end developer in Eindhoven. I build interfaces, the AI features behind them, and things
-              that track a human body through a phone camera.
-            </p>
-            <p>
-              I have been interested in <b className='text-accent'>AR and VR</b> since long before it was a bullet point, which is
-              how I ended up writing 3D configurators for a living. Away from a screen I am usually{' '}
-              <b className='text-accent-2'>on a skateboard</b>, where a 404 also means landing on your back.
-            </p>
           </Panel>
 
           <Panel title='Try These Instead'>
