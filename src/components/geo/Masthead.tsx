@@ -24,7 +24,7 @@ export default function Masthead() {
         <button
           type='button'
           onClick={onBadgeClick}
-          className='block cursor-pointer bg-black px-4 py-1 font-display text-[0.95rem] tracking-[0.16em] text-[#ffd400] select-none'
+          className='block bg-black px-4 py-1 font-display text-[0.95rem] tracking-[0.16em] text-[#ffd400] select-none'
         >
           UNDER CONSTRUCTION
         </button>

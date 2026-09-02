@@ -146,7 +146,7 @@ function Button88({ badge, active, onPick }: Readonly<{ badge: Badge; active: bo
       onClick={onPick}
       aria-label={badge.title}
       aria-pressed={MODES.has(badge.key) ? active : undefined}
-      className='shrink-0 cursor-pointer leading-none transition-transform hover:-translate-y-0.5'
+      className='shrink-0 leading-none transition-transform hover:-translate-y-0.5'
     >
       <svg
         aria-hidden='true'
