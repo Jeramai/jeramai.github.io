@@ -14,7 +14,7 @@ const FACTS: [string, string][] = [
   ['Main stack', 'React, Next.js, React Native, Expo, TypeScript, Tailwind'],
   ['Also does', 'AI features, agent workflows, computer vision'],
   ['Still does', 'Back-end, when the front-end needs one'],
-  ['Location', 'The Netherlands']
+  ['Location', 'Eindhoven, The Netherlands']
 ];
 
 const COOL_LINKS = [

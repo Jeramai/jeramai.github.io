@@ -3,13 +3,7 @@
 import { useTheme } from '@/lib/theme-store';
 import { Fragment } from 'react';
 
-const SHOUTS = [
-  'THIS PAGE IS UNDER CONSTRUCTION FOREVER',
-  'BEST VIEWED AT 800x600',
-  'SIGN MY GUESTBOOK',
-  'NO REFUNDS',
-  'TELL A FRIEND'
-];
+const SHOUTS = ['THIS PAGE IS UNDER CONSTRUCTION FOREVER', 'BEST VIEWED AT 800x600', 'NO REFUNDS', 'TELL A FRIEND'];
 
 export default function Marquee() {
   const { theme } = useTheme();
