@@ -6,9 +6,15 @@ const LINKS = [
   { href: '#about', label: 'About Me', dot: '#2080ff' },
   { href: '#skills', label: 'What I Am Good At', dot: '#ffd020' },
   { href: '#projects', label: 'My Projects', dot: '#20c040' },
-  { href: '#work', label: 'Where I Work', dot: '#40e0d0' },
-  { href: '#links', label: 'Cool Links', dot: '#c060ff' },
   { href: 'mailto:jeramai.work@gmail.com', label: 'E-Mail Me', dot: '#ff8020' }
+];
+
+const COOL_LINKS = [
+  { href: 'https://github.com/jeramai', label: 'My GitHub' },
+  { href: 'https://linkedin.com/in/jeramai', label: 'My LinkedIn' },
+  { href: 'https://nestjs.doctor', label: 'nestjs-doctor' },
+  { href: 'https://jeramai.github.io/Planet-Crashers/', label: 'Planet Crashers' },
+  { href: 'https://jeramai.github.io/svg-to-3d/', label: 'SVG to 3D' }
 ];
 
 export default function Rail() {
@@ -30,6 +36,24 @@ export default function Rail() {
             ))}
           </ul>
         </nav>
+      </Panel>
+
+      <Panel title='Cool Links'>
+        <ul className='m-0 list-none p-0'>
+          {COOL_LINKS.map((l) => (
+            <li key={l.href} className='mt-2 first:mt-0'>
+              <a
+                href={l.href}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='flex min-h-6 items-center gap-2 py-1 underline'
+              >
+                <span aria-hidden='true'>&rarr;</span>
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
       </Panel>
 
       <MidiJukebox />

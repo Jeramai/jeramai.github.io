@@ -17,13 +17,6 @@ const FACTS: [string, string][] = [
   ['Location', 'Eindhoven, The Netherlands']
 ];
 
-const COOL_LINKS = [
-  { href: 'https://github.com/jeramai', label: 'My GitHub' },
-  { href: 'https://linkedin.com/in/jeramai', label: 'My LinkedIn' },
-  { href: 'https://jeramai.github.io/Planet-Crashers/', label: 'Planet Crashers (my game)' },
-  { href: 'https://jeramai.github.io/svg-to-3d/', label: 'SVG to 3D' }
-];
-
 export default function Home() {
   return (
     <>
@@ -97,25 +90,6 @@ export default function Home() {
 
             <Panel id='projects' title='My Projects'>
               <ProjectList />
-            </Panel>
-
-            <Panel id='work' title='Where I Work'>
-              <p>
-                I work at <b className='text-accent'>BAS World</b>, on the platforms that sell trucks, trailers and machinery
-                across Europe. Web, ERP and mobile, plus the AI features that sit on top of them.
-              </p>
-            </Panel>
-
-            <Panel id='links' title='Cool Links'>
-              <ul className='m-0 list-disc pl-5'>
-                {COOL_LINKS.map((l) => (
-                  <li key={l.href} className='mb-1.5'>
-                    <a href={l.href} target='_blank' rel='noopener noreferrer' className='inline-block py-1'>
-                      {l.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
             </Panel>
           </main>
         </div>
