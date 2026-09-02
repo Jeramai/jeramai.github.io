@@ -1,8 +1,42 @@
 const GROUPS: { label: string; items: string[] }[] = [
-  { label: 'Front-end', items: ['React', 'Next.js', 'React Native', 'Expo', 'TypeScript', 'Tailwind CSS', 'Three.js'] },
-  { label: 'Craft', items: ['Design systems', 'Accessibility', 'Performance', 'Testing', 'Component APIs'] },
-  { label: 'AI', items: ['Agent workflows', 'LLM product features', 'Pose + vision pipelines', 'Evals', 'Prompt design'] },
-  { label: 'Back-end, when needed', items: ['NestJS', 'Node.js', 'Laravel', 'PHP', 'Python', 'MySQL'] }
+  {
+    label: 'Front-end',
+    items: ['React', 'Next.js', 'React Native', 'Expo', 'TypeScript', 'Tailwind CSS', 'NativeWind', 'SCSS', 'Three.js', 'Motion']
+  },
+  {
+    label: 'Craft',
+    items: [
+      'Design systems',
+      'Storybook',
+      'Accessibility',
+      'Performance',
+      'i18n',
+      'Component APIs',
+      'Jest',
+      'Vitest',
+      'Playwright'
+    ]
+  },
+  {
+    label: 'AI and vision',
+    items: [
+      'Anthropic SDK',
+      'Agent workflows',
+      'LLM product features',
+      'TensorFlow.js pose detection',
+      'TFLite on device',
+      'Vision Camera',
+      'Evals'
+    ]
+  },
+  {
+    label: 'Back-end, when needed',
+    items: ['NestJS', 'Node.js', 'Laravel', 'PHP', 'Python', 'MySQL', 'Zod', 'REST and BFF design']
+  },
+  {
+    label: 'Running it in production',
+    items: ['Sentry', 'OpenTelemetry', 'Ably realtime', 'Feature flags', 'CI gates', 'oxlint', 'oxfmt']
+  }
 ];
 
 export default function Skills() {

@@ -3,7 +3,7 @@
 import { useTheme } from '@/lib/theme-store';
 
 export default function Masthead() {
-  const { theme, index, total, shuffle } = useTheme();
+  const { theme, index, total, shuffle, prev, next } = useTheme();
 
   return (
     <header className='px-0 pt-5 pb-2 text-center'>
@@ -25,9 +25,17 @@ export default function Masthead() {
         <span className='animate-blink'>+++</span> Welcome to my corner of cyberspace <span className='animate-blink'>+++</span>
       </p>
 
-      <button type='button' onClick={shuffle} className='shuffle-btn'>
-        Shuffle my theme!!!
-      </button>
+      <div className='flex flex-wrap items-stretch justify-center gap-2'>
+        <button type='button' onClick={prev} className='chev-btn' aria-label='Previous theme'>
+          &#9664;
+        </button>
+        <button type='button' onClick={shuffle} className='shuffle-btn'>
+          Shuffle my theme!!!
+        </button>
+        <button type='button' onClick={next} className='chev-btn' aria-label='Next theme'>
+          &#9654;
+        </button>
+      </div>
 
       <p className='mt-2.5 mb-0 text-[0.85rem] font-bold tracking-wider uppercase'>
         Now viewing theme {index + 1} of {total}: <b className='text-hot'>{theme.name}</b>

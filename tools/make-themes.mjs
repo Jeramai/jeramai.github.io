@@ -473,6 +473,7 @@ function buildTheme(id, name, mood, archName, seed, crt) {
 
   const marqueeBg = [h, Math.min(sat, 55), M.dark ? 9 : 18];
   const marqueeInk = fit([h2, sat, 72], marqueeBg, 5);
+  const marqueeSep = fit([h3, sat, 66], marqueeBg, 4.6);
 
   const border = fit([h2, Math.min(sat, 90), M.dark ? 52 : 42], panel, 3);
 
@@ -505,6 +506,7 @@ function buildTheme(id, name, mood, archName, seed, crt) {
       '--head-ink': hex(...headInk),
       '--marquee-bg': hex(...marqueeBg),
       '--marquee-ink': hex(...marqueeInk),
+      '--marquee-sep': hex(...marqueeSep),
       '--border-w': A.w,
       '--radius': A.r,
       '--shadow': A.shadow,
@@ -519,7 +521,8 @@ function buildTheme(id, name, mood, archName, seed, crt) {
       link: contrast(link, panel),
       headInkA: contrast(headInk, headA),
       headInkB: contrast(headInk, headB),
-      marquee: contrast(marqueeInk, marqueeBg)
+      marquee: contrast(marqueeInk, marqueeBg),
+      marqueeSep: contrast(marqueeSep, marqueeBg)
     }
   };
 }
@@ -547,7 +550,7 @@ for (let i = 0; i < COUNT; i++) {
 
 /* -------------------------------- validate ------------------------------- */
 
-const MINIMUMS = { ink: 7, inkDim: 4.5, accent: 4.5, link: 4.5, headInkA: 4.5, headInkB: 4.5, marquee: 4.5 };
+const MINIMUMS = { ink: 7, inkDim: 4.5, accent: 4.5, link: 4.5, headInkA: 4.5, headInkB: 4.5, marquee: 4.5, marqueeSep: 4.5 };
 const failures = [];
 for (const t of themes) {
   for (const [key, min] of Object.entries(MINIMUMS)) {

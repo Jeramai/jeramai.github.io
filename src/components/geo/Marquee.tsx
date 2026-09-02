@@ -1,6 +1,7 @@
 'use client';
 
 import { useTheme } from '@/lib/theme-store';
+import { Fragment } from 'react';
 
 const SHOUTS = [
   'THIS PAGE IS UNDER CONSTRUCTION FOREVER',
@@ -12,14 +13,26 @@ const SHOUTS = [
 
 export default function Marquee() {
   const { theme } = useTheme();
-  const text = [`NOW ENTERING: ${theme.name}`, ...SHOUTS].join(' !!! ');
+  const items = [`NOW ENTERING: ${theme.name}`, ...SHOUTS];
+
+  const run = (copy: string) =>
+    items.map((item, i) => (
+      <Fragment key={`${copy}-${item}`}>
+        <span className='px-7'>{item}</span>
+        {i < items.length - 1 ? <span className='text-marquee-sep'>◆◆◆</span> : null}
+      </Fragment>
+    ));
 
   return (
     <div className='sticky top-0 z-50 overflow-hidden border-b-2 border-edge bg-marquee-bg font-display text-sm tracking-wider whitespace-nowrap text-marquee-ink'>
       <div className='inline-block animate-marquee py-1.5'>
-        <span className='pr-12'>{text}</span>
-        <span className='pr-12' aria-hidden='true'>
-          {text}
+        <span className='inline-block'>{run('a')}</span>
+        <span className='inline-block px-7 text-marquee-sep'>◆◆◆</span>
+        <span className='inline-block' aria-hidden='true'>
+          {run('b')}
+        </span>
+        <span className='inline-block px-7 text-marquee-sep' aria-hidden='true'>
+          ◆◆◆
         </span>
       </div>
     </div>

@@ -19,6 +19,7 @@
   --color-head-ink: var(--head-ink);
   --color-marquee-bg: var(--marquee-bg);
   --color-marquee-ink: var(--marquee-ink);
+  --color-marquee-sep: var(--marquee-sep);
 
   --radius-theme: var(--radius);
   --font-display: var(--font-display);
@@ -102,6 +103,27 @@
   font-weight: 700;
   letter-spacing: var(--head-spacing);
   text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.15);
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+@utility chev-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 46px;
+  border: var(--border-w) solid var(--border);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--head-a), var(--head-b));
+  box-shadow: var(--shadow);
+  color: var(--head-ink);
+  font-size: 0.85rem;
   cursor: pointer;
 
   &:hover {

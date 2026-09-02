@@ -31,16 +31,34 @@ export function setTheme(id: string) {
   listeners.forEach((l) => l());
 }
 
-export function useTheme(): { theme: Theme; index: number; total: number; shuffle: () => void } {
+type ThemeControls = {
+  theme: Theme;
+  index: number;
+  total: number;
+  shuffle: () => void;
+  prev: () => void;
+  next: () => void;
+};
+
+export function useTheme(): ThemeControls {
   const id = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const found = themes.findIndex((t) => t.id === id);
   const index = found < 0 ? 0 : found;
 
+  const step = (by: number) => setTheme(themes[(index + by + themes.length) % themes.length].id);
+
   const shuffle = () => {
-    let next = index;
-    while (next === index) next = Math.floor(Math.random() * themes.length);
-    setTheme(themes[next].id);
+    let pick = index;
+    while (pick === index) pick = Math.floor(Math.random() * themes.length);
+    setTheme(themes[pick].id);
   };
 
-  return { theme: themes[index], index, total: themes.length, shuffle };
+  return {
+    theme: themes[index],
+    index,
+    total: themes.length,
+    shuffle,
+    prev: () => step(-1),
+    next: () => step(1)
+  };
 }

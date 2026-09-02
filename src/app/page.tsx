@@ -1,4 +1,3 @@
-import Buzzwords from '@/components/geo/Buzzwords';
 import Marquee from '@/components/geo/Marquee';
 import Masthead from '@/components/geo/Masthead';
 import Panel from '@/components/geo/Panel';
@@ -6,17 +5,16 @@ import ProjectList from '@/components/geo/ProjectList';
 import Rail from '@/components/geo/Rail';
 import Skills from '@/components/geo/Skills';
 
-const YEARS = new Date().getFullYear() - 2018;
+const YEARS = new Date().getFullYear() - 2013;
 
 const FACTS: [string, string][] = [
   ['Name', 'Jeramai Faber'],
   ['Title', 'Senior Front-end Developer'],
-  ['Building since', `2018 (${YEARS} years)`],
-  ['Main stack', 'React, Next.js, React Native, TypeScript'],
+  ['Building since', `2013 (${YEARS} years)`],
+  ['Main stack', 'React, Next.js, React Native, Expo, TypeScript, Tailwind'],
   ['Also does', 'AI features, agent workflows, computer vision'],
   ['Still does', 'Back-end, when the front-end needs one'],
-  ['Location', 'The Netherlands'],
-  ['Status', 'Under construction forever']
+  ['Location', 'The Netherlands']
 ];
 
 const COOL_LINKS = [
@@ -38,7 +36,7 @@ export default function Home() {
 
       <Marquee />
 
-      <div className='mx-auto max-w-[1180px] px-3 pb-12'>
+      <div className='mx-auto max-w-[1180px] px-3 pb-5'>
         <Masthead />
 
         <div className='grid items-start gap-4 md:grid-cols-[250px_minmax(0,1fr)]'>
@@ -99,10 +97,6 @@ export default function Home() {
               <ProjectList />
             </Panel>
 
-            <Panel id='awards' title='Awards This Site Has Won'>
-              <Buzzwords />
-            </Panel>
-
             <Panel id='work' title='Where I Work'>
               <p>
                 I work at <b className='text-accent'>BAS World</b>, on the platforms that sell trucks, trailers and machinery
@@ -124,9 +118,9 @@ export default function Home() {
           </main>
         </div>
 
-        <footer className='mt-6 border-t-2 border-edge pt-4 text-center text-[0.82rem] text-ink-dim'>
+        <footer className='mt-4 border-t-2 border-edge pt-3 text-center text-[0.82rem] text-ink-dim'>
           <p className='my-1'>&copy; {new Date().getFullYear()} Jeramai Faber. All rights reserved.</p>
-          <p className='my-1'>This page has been under construction since 2018.</p>
+          <p className='my-1'>This page has been under construction since 2013.</p>
         </footer>
       </div>
     </>
