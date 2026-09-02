@@ -1,4 +1,4 @@
-import { STORAGE_KEY, THEME_PARAM } from '@/lib/theme-keys';
+import { THEME_PARAM } from '@/lib/theme-keys';
 import themes from '@/lib/themes.generated';
 import type { Metadata } from 'next';
 import './globals.css';
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
 
 const ids = JSON.stringify(themes.map((t) => t.id));
 
-// Precedence: a shared ?theme= link, then the saved theme, then a random one.
-const bootstrap = `(function(){try{var i=${ids};var q=new URLSearchParams(location.search).get(${JSON.stringify(THEME_PARAM)});var s=localStorage.getItem(${JSON.stringify(STORAGE_KEY)});var t=i.indexOf(q)>=0?q:i.indexOf(s)>=0?s:i[Math.floor(Math.random()*i.length)];document.documentElement.dataset.theme=t;}catch(e){}})()`;
+// A shared ?theme= link pins one; otherwise every load is a fresh theme, which is the point of having 99.
+const bootstrap = `(function(){try{var i=${ids};var q=new URLSearchParams(location.search).get(${JSON.stringify(THEME_PARAM)});var t=i.indexOf(q)>=0?q:i[Math.floor(Math.random()*i.length)];document.documentElement.dataset.theme=t;}catch(e){}})()`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

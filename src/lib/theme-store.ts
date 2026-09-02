@@ -1,10 +1,10 @@
 'use client';
 
-import { STORAGE_KEY, THEME_PARAM } from '@/lib/theme-keys';
+import { THEME_PARAM } from '@/lib/theme-keys';
 import themes, { type Theme } from '@/lib/themes.generated';
 import { useEffect, useSyncExternalStore } from 'react';
 
-export { STORAGE_KEY, THEME_PARAM } from '@/lib/theme-keys';
+export { THEME_PARAM } from '@/lib/theme-keys';
 
 const listeners = new Set<() => void>();
 
@@ -24,11 +24,6 @@ function getServerSnapshot() {
 
 export function setTheme(id: string) {
   document.documentElement.dataset.theme = id;
-  try {
-    localStorage.setItem(STORAGE_KEY, id);
-  } catch {
-    /* private mode, the theme just does not persist */
-  }
   // Keep the address bar in step, so whatever you are looking at is what you share.
   try {
     const url = new URL(window.location.href);

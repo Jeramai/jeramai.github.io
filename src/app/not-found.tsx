@@ -1,5 +1,5 @@
 import Marquee from '@/components/geo/Marquee';
-import Image from 'next/image';
+import SkateWipeout from '@/components/geo/SkateWipeout';
 import Link from 'next/link';
 import Panel from '@/components/geo/Panel';
 import type { Metadata } from 'next';
@@ -40,14 +40,7 @@ export default function NotFound() {
         </header>
 
         <div className='mx-auto mb-4 max-w-[480px]'>
-          <Image
-            src='/404-skate.svg'
-            alt='A pixel-art skateboarder on their back, board rolling away'
-            width={480}
-            height={280}
-            className='edge theme-shadow w-full'
-            priority
-          />
+          <SkateWipeout />
         </div>
 
         <main className='grid gap-4'>
