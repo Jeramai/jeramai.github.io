@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 const SIZE = 32;
 const FRAMES = 8;
-const STEP_MS = 120;
+const STEP_MS = 200;
 
 export default function AnimatedFavicon() {
   useEffect(() => {
@@ -16,13 +16,18 @@ export default function AnimatedFavicon() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let link = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
-    const original = link?.getAttribute('href') ?? null;
-    if (!link) {
-      link = document.createElement('link');
-      link.rel = 'icon';
-      document.head.appendChild(link);
-    }
+    const original = document.querySelector<HTMLLinkElement>('link[rel~="icon"]')?.getAttribute('href') ?? null;
+
+    // Chrome caches the tab icon and ignores an href change on the existing node,
+    // so each frame swaps in a fresh <link> instead.
+    const paint = (href: string) => {
+      document.querySelectorAll('link[rel~="icon"]').forEach((n) => n.remove());
+      const next = document.createElement('link');
+      next.rel = 'icon';
+      next.type = 'image/png';
+      next.href = href;
+      document.head.appendChild(next);
+    };
 
     // Hazard stripes scrolling behind a J, which is the masthead badge at 32px.
     const draw = (frame: number) => {
@@ -55,7 +60,7 @@ export default function AnimatedFavicon() {
       ctx.textBaseline = 'middle';
       ctx.fillText('J', SIZE / 2, SIZE / 2 + 1);
 
-      link.href = canvas.toDataURL('image/png');
+      paint(canvas.toDataURL('image/png'));
     };
 
     if (still) {
@@ -84,7 +89,7 @@ export default function AnimatedFavicon() {
     return () => {
       window.clearTimeout(timer);
       document.removeEventListener('visibilitychange', onVisibility);
-      if (original) link.href = original;
+      if (original) paint(original);
     };
   }, []);
 
