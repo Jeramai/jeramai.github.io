@@ -3,6 +3,24 @@ import Project from '@/types/project';
 // Sample Projects Data
 const projects: Project[] = [
   {
+    title: 'Cast Anything',
+    category: 'Full Stack',
+    description:
+      "A mobile app that casts video, music and photos from a phone to a Samsung TV. Samsung's Tizen does not support Chromecast, so the app uses DLNA: it discovers the TV over SSDP, serves the file from a small HTTP server on the phone, and drives playback with AVTransport.",
+    image: '/projects/cast-anything.png',
+    github: 'https://github.com/Jeramai/cast-anything',
+    tags: ['Expo', 'React Native', 'TypeScript']
+  },
+  {
+    title: 'Sonos Subs',
+    category: 'Front-end',
+    description:
+      'A browser extension that adds synchronised lyrics to the Sonos web app, with karaoke-style highlighting. It also adds scroll-wheel volume control, picture-in-picture album artwork, desktop notifications and OS media key support.',
+    image: '/projects/sonos-subs.jpg',
+    github: 'https://github.com/Jeramai/sonos-subs-extension',
+    tags: ['JavaScript', 'Chrome Extension']
+  },
+  {
     title: 'Virtutec Platform',
     category: 'Full Stack',
     description:
