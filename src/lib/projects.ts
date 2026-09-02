@@ -23,7 +23,7 @@ const projects: Project[] = [
     category: 'Open source',
     description:
       'A deterministic static-analysis CLI for NestJS that catches the mistakes AI code assistants make. I contributed inline rule suppression, so a team can silence a rule at the exact line instead of switching it off for the whole project.',
-    image: '/projects/nestjs-doctor.png',
+    image: '/projects/nestjs-doctor.webp',
     demo: 'https://nestjs.doctor',
     github: 'https://github.com/RoloBits/nestjs-doctor',
     tags: ['TypeScript', 'Static analysis', 'Open source']
@@ -33,7 +33,7 @@ const projects: Project[] = [
     category: 'Full Stack',
     description:
       "A mobile app that casts video, music and photos from a phone to a Samsung TV. Samsung's Tizen does not support Chromecast, so the app uses DLNA: it discovers the TV over SSDP, serves the file from a small HTTP server on the phone, and drives playback with AVTransport.",
-    image: '/projects/cast-anything.png',
+    image: '/projects/cast-anything.webp',
     github: 'https://github.com/Jeramai/cast-anything',
     tags: ['Expo', 'React Native', 'TypeScript']
   },
@@ -42,7 +42,7 @@ const projects: Project[] = [
     category: 'Front-end',
     description:
       'A browser extension that adds synchronised lyrics to the Sonos web app, with karaoke-style highlighting. It also adds scroll-wheel volume control, picture-in-picture album artwork, desktop notifications and OS media key support.',
-    image: '/projects/sonos-subs.jpg',
+    image: '/projects/sonos-subs.webp',
     github: 'https://github.com/Jeramai/sonos-subs-extension',
     tags: ['JavaScript', 'Chrome Extension']
   },
@@ -51,7 +51,7 @@ const projects: Project[] = [
     category: 'Full Stack',
     description:
       'A 3D platform for manufacturers, and the three products built on it: a sales configurator that prices a machine as you build it, step-by-step visual work instructions on the factory floor, and a spare-part finder that lets a customer click the part they need. Laravel and Next.js behind a Three.js viewer.',
-    image: '/projects/salcon.png',
+    image: '/projects/salcon.webp',
     demo: 'https://viewer.salcon.live/viewer/demo',
     tags: ['Laravel', 'Next.js', 'Three.js', 'Ionic', 'AR/VR']
   },
@@ -60,7 +60,7 @@ const projects: Project[] = [
     category: 'Full Stack',
     description:
       'A tool was developed to automatically convert complex 3D files, including CAD formats, into optimized, web-performant formats, enabling seamless integration of 3D models into web applications.',
-    image: '/projects/amc.jpg',
+    image: '/projects/amc.webp',
     tags: ['Python', 'Laravel'],
     aiImage: true
   },
@@ -77,7 +77,7 @@ const projects: Project[] = [
     category: 'Full Stack',
     description:
       'A chatbot was developed and implemented to optimize and streamline workflows within the Dutch Tax Department by automating routine inquiries and providing instant access to information, enhancing efficiency and reducing the workload on human agents.',
-    image: '/projects/chatbot.jpg',
+    image: '/projects/chatbot.webp',
     tags: ['Java'],
     aiImage: true
   },
@@ -86,7 +86,7 @@ const projects: Project[] = [
     category: 'Game',
     description:
       "My first realeased game, a 'shoot and merge' title with a focus on gravity simulation, providing a unique (and addicting) gameplay experience.",
-    image: '/projects/planet-crashers.jpg',
+    image: '/projects/planet-crashers.webp',
     demo: 'https://jeramai.github.io/Planet-Crashers/',
     github: 'https://github.com/Jeramai/Planet-Crashers',
     tags: ['Next.js', 'Three.js'],
@@ -97,7 +97,7 @@ const projects: Project[] = [
     category: 'Full Stack',
     description:
       'As my first solo Web3 project, I developed and launched a decentralized application on the Ronin blockchain, enabling users to directly swap NFTs, providing a valuable community tool and demonstrating my blockchain development capabilities.',
-    image: '/projects/ronin-nft-swap.png',
+    image: '/projects/ronin-nft-swap.webp',
     demo: 'https://ronin-nft-trading.vercel.app/',
     github: 'https://github.com/Jeramai/RON-NFT-Swap',
     tags: ['Next.js', 'web3.js']
@@ -107,7 +107,7 @@ const projects: Project[] = [
     category: 'Full Stack',
     description:
       'Rapidly convert any SVG image into a 3D model, simplifying 3D asset creation and bridging the gap between 2D and 3D design.',
-    image: '/projects/svg-3d.png',
+    image: '/projects/svg-3d.webp',
     demo: 'https://jeramai.github.io/svg-to-3d/',
     github: 'https://github.com/Jeramai/svg-to-3d',
     tags: ['Node.js'],
