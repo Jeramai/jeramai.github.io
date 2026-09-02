@@ -6,12 +6,13 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL('https://jeramai.github.io'),
   title: 'Jeramai Faber - My Home Page on the World Wide Web',
-  description: 'The official home page of Jeramai Faber, full stack developer. Under construction forever. Now with 99 themes.',
+  description:
+    'Jeramai Faber, senior front-end developer. React, Next.js and React Native, plus the AI that ships with them. Under construction forever. Now with 99 themes.',
   openGraph: {
     type: 'website',
     url: 'https://jeramai.github.io',
     title: 'Jeramai Faber - My Home Page on the World Wide Web',
-    description: 'Full stack developer. Under construction forever. Now with 99 themes.'
+    description: 'Senior front-end developer. React, Next.js, React Native and AI. Under construction forever.'
   }
 };
 

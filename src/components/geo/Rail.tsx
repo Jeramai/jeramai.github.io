@@ -8,7 +8,8 @@ const LINKS = [
   { href: '#welcome', label: 'Home', dot: '#ff2020' },
   { href: '#about', label: 'About Me', dot: '#2080ff' },
   { href: '#projects', label: 'My Projects', dot: '#20c040' },
-  { href: '#work', label: 'Where I Work', dot: '#ffd020' },
+  { href: '#skills', label: 'What I Am Good At', dot: '#ffd020' },
+  { href: '#work', label: 'Where I Work', dot: '#40e0d0' },
   { href: '#links', label: 'Cool Links', dot: '#c060ff' },
   { href: 'mailto:jeramai.work@gmail.com', label: 'E-Mail Me', dot: '#ff8020' }
 ];

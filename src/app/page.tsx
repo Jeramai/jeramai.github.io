@@ -1,14 +1,21 @@
+import Buzzwords from '@/components/geo/Buzzwords';
 import Marquee from '@/components/geo/Marquee';
 import Masthead from '@/components/geo/Masthead';
 import Panel from '@/components/geo/Panel';
 import ProjectList from '@/components/geo/ProjectList';
 import Rail from '@/components/geo/Rail';
+import Skills from '@/components/geo/Skills';
+
+const YEARS = new Date().getFullYear() - 2018;
 
 const FACTS: [string, string][] = [
   ['Name', 'Jeramai Faber'],
-  ['Occupation', 'Full Stack Developer'],
+  ['Title', 'Senior Front-end Developer'],
+  ['Building since', `2018 (${YEARS} years)`],
+  ['Main stack', 'React, Next.js, React Native, TypeScript'],
+  ['Also does', 'AI features, agent workflows, computer vision'],
+  ['Still does', 'Back-end, when the front-end needs one'],
   ['Location', 'The Netherlands'],
-  ['Speaks', 'TypeScript, PHP, Python'],
   ['Status', 'Under construction forever']
 ];
 
@@ -52,8 +59,23 @@ export default function Home() {
 
             <Panel id='about' title='About Jeramai Faber'>
               <p>
-                Hi, I&apos;m Jeramai. I build web applications, mobile apps and the occasional game. I work with React, Next.js,
-                Expo, Laravel and far too much Three.js.
+                Hi, I&apos;m Jeramai, a <b className='text-accent'>senior front-end developer</b>. I build the interfaces people
+                actually use &mdash; React, Next.js and React Native &mdash; and I care about the parts nobody demos: performance,
+                accessibility, and a design system that survives contact with a real product.
+              </p>
+              <p>
+                I still write back-ends. NestJS, Node, Laravel. Just far less than I used to, and usually because the front-end
+                needed one.
+              </p>
+              <p>
+                The part I care most about now is <b className='text-accent-2'>AI, both halves of it</b>. I <b>build with it</b>:
+                an AI backend-for-frontend serving real product features, agent-driven automation in production, and a
+                pure-TypeScript vision pipeline that turns a phone camera into verified, counted reps. And I <b>build using it</b>{' '}
+                &mdash; agent-assisted development is how I ship every day, not a demo I tried once.
+              </p>
+              <p className='text-ink-dim'>
+                This whole page is an example. The 99 themes are not hand-made &mdash; a generator combines 11 moods with 14
+                layout archetypes, and refuses to build if any colour pair fails its contrast target.
               </p>
               <table className='my-3 w-full border-collapse'>
                 <tbody>
@@ -69,14 +91,22 @@ export default function Home() {
               </table>
             </Panel>
 
+            <Panel id='skills' title='What I Am Good At'>
+              <Skills />
+            </Panel>
+
             <Panel id='projects' title='My Projects'>
               <ProjectList />
+            </Panel>
+
+            <Panel id='awards' title='Awards This Site Has Won'>
+              <Buzzwords />
             </Panel>
 
             <Panel id='work' title='Where I Work'>
               <p>
                 I work at <b className='text-accent'>BAS World</b>, on the platforms that sell trucks, trailers and machinery
-                across Europe.
+                across Europe. Web, ERP and mobile, plus the AI features that sit on top of them.
               </p>
             </Panel>
 
