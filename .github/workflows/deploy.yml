@@ -73,6 +73,12 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
+      - name: Lint
+        run: ${{ steps.detect-package-manager.outputs.runner }} oxlint
+
+      - name: Check formatting
+        run: ${{ steps.detect-package-manager.outputs.runner }} oxfmt --check
+
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
