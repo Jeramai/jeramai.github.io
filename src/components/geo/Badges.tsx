@@ -1,5 +1,6 @@
 'use client';
 
+import { AD_GAME_END, AD_GAME_START } from '@/components/geo/AdPopups';
 import { JUKEBOX_PLAY } from '@/components/geo/MidiJukebox';
 import { useEffect, useState } from 'react';
 
@@ -43,6 +44,7 @@ const BADGES: Badge[] = [
     accent: '#ffaa00'
   },
   { key: 'html', title: 'Valid HTML 4.0', top: 'VALID', bottom: 'HTML 4.0', ink: '#ffffff', bg: '#003366', accent: '#ffcc00' },
+  { key: 'y2k', title: 'Y2K compliant', top: 'Y2K', bottom: 'COMPLIANT', ink: '#d9f7ff', bg: '#001b2e', accent: '#00e0a0' },
   {
     key: 'comic',
     title: 'Comic Sans approved',
@@ -53,6 +55,15 @@ const BADGES: Badge[] = [
     accent: '#c4009c'
   },
   { key: 'midi', title: 'MIDI powered', top: 'MIDI', bottom: 'POWERED', ink: '#ffffff', bg: '#3a0d4d', accent: '#ff7be5' },
+  {
+    key: 'adfree',
+    title: '100 percent ad free',
+    top: '100% AD',
+    bottom: 'FREE!',
+    ink: '#ffffff',
+    bg: '#0b2a12',
+    accent: '#3dff7a'
+  },
   {
     key: 'browser',
     title: 'Your browser is wrong',
@@ -91,6 +102,10 @@ const DIALOGS: Record<string, { title: string; lines: () => string[] }> = {
     title: 'Browser Compatibility Check',
     lines: browserLines
   },
+  y2k: {
+    title: 'Y2K Compliance Certificate',
+    lines: y2kLines
+  },
   html: {
     title: 'W3C Markup Validation Service',
     lines: () => [
@@ -105,10 +120,46 @@ const DIALOGS: Record<string, { title: string; lines: () => string[] }> = {
   }
 };
 
+const AD_FREE_BROKEN: Badge = {
+  key: 'adfree',
+  title: 'Ad free, allegedly',
+  top: 'AD FREE',
+  bottom: '???',
+  ink: '#ffd4d4',
+  bg: '#2b0000',
+  accent: '#ff3b3b'
+};
+
+const pad = (n: number) => String(n).padStart(2, '0');
+
 const MODES = new Set(['res', 'comic', 'blink']);
 const ACTIONS: Record<string, () => void> = {
-  midi: () => window.dispatchEvent(new Event(JUKEBOX_PLAY))
+  midi: () => window.dispatchEvent(new Event(JUKEBOX_PLAY)),
+  adfree: () => window.dispatchEvent(new Event(AD_GAME_START))
 };
+
+function y2kLines() {
+  const seconds = Math.floor((Date.now() - new Date('2000-01-01T00:00:00').getTime()) / 1000);
+  const days = Math.floor(seconds / 86400);
+  const years = Math.floor(days / 365.25);
+  const spare = days - Math.floor(years * 365.25);
+  const clock = `${pad(Math.floor((seconds % 86400) / 3600))}:${pad(Math.floor((seconds % 3600) / 60))}:${pad(seconds % 60)}`;
+  return [
+    'Status: COMPLIANT',
+    '',
+    'Millennium bug due 1 Jan 2000, 00:00:00.',
+    `Time since: ${years} years, ${spare} days, ${clock}`,
+    '',
+    'Subsystems checked:',
+    '',
+    '  [OK] Date fields ....... no failures',
+    '  [OK] Screen blanker .... idle 60s',
+    '  [OK] Cheat code ........ 10 keys, ends B A',
+    '  [OK] Advert filter ..... 0 blocked',
+    '',
+    'Two-digit years remain unsupported.'
+  ];
+}
 
 function browserLines() {
   const ua = navigator.userAgent;
@@ -189,6 +240,20 @@ function Button88({ badge, active, onPick }: Readonly<{ badge: Badge; active: bo
 export default function Badges() {
   const [modes, setModes] = useState<Record<string, boolean>>({});
   const [dialog, setDialog] = useState<string | null>(null);
+  const [ads, setAds] = useState(false);
+  const [, retick] = useState(0);
+
+  useEffect(() => {
+    if (dialog !== 'y2k') return;
+    const id = window.setInterval(() => retick((n) => n + 1), 1000);
+    return () => window.clearInterval(id);
+  }, [dialog]);
+
+  useEffect(() => {
+    const onEnd = () => setAds(false);
+    window.addEventListener(AD_GAME_END, onEnd);
+    return () => window.removeEventListener(AD_GAME_END, onEnd);
+  }, []);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -198,6 +263,7 @@ export default function Badges() {
   }, [modes.res, modes.comic, modes.blink]);
 
   const pick = (key: string) => {
+    if (key === 'adfree') setAds(true);
     if (MODES.has(key)) setModes((m) => ({ ...m, [key]: !m[key] }));
     else if (ACTIONS[key]) ACTIONS[key]();
     else setDialog(key);
@@ -209,7 +275,12 @@ export default function Badges() {
     <>
       <div className='flex flex-wrap justify-center gap-2'>
         {BADGES.map((b) => (
-          <Button88 key={b.key} badge={b} active={!!modes[b.key]} onPick={() => pick(b.key)} />
+          <Button88
+            key={b.key}
+            badge={b.key === 'adfree' && ads ? AD_FREE_BROKEN : b}
+            active={!!modes[b.key]}
+            onPick={() => pick(b.key)}
+          />
         ))}
       </div>
 
