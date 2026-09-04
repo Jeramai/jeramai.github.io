@@ -1,3 +1,4 @@
+import AdPopups from '@/components/geo/AdPopups';
 import AnimatedFavicon from '@/components/geo/AnimatedFavicon';
 import Bsod from '@/components/geo/Bsod';
 import CursorTrail from '@/components/geo/CursorTrail';
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {children}
         <CursorTrail />
         <AnimatedFavicon />
+        <AdPopups />
         <SecretCodes />
         <Screensaver />
         <Bsod />
