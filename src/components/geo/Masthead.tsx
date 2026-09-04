@@ -1,34 +1,15 @@
 'use client';
 
-import { BSOD_EVENT } from '@/components/geo/Bsod';
+import ConstructionSign from '@/components/geo/ConstructionSign';
 import { useTheme, useThemeKeys } from '@/lib/theme-store';
-import { useRef } from 'react';
 
 export default function Masthead() {
   const { theme, index, total, shuffle } = useTheme();
   useThemeKeys();
 
-  const taps = useRef<number[]>([]);
-  const onBadgeClick = () => {
-    const now = Date.now();
-    taps.current = [...taps.current, now].filter((t) => now - t < 2000);
-    if (taps.current.length >= 7) {
-      taps.current = [];
-      window.dispatchEvent(new Event(BSOD_EVENT));
-    }
-  };
-
   return (
     <header className='px-0 pt-5 pb-2 text-center'>
-      <p className='hazard m-0 inline-block border-[3px] border-black p-1'>
-        <button
-          type='button'
-          onClick={onBadgeClick}
-          className='block bg-black px-4 py-1 font-display text-[0.95rem] tracking-[0.16em] text-[#ffd400] select-none'
-        >
-          UNDER CONSTRUCTION
-        </button>
-      </p>
+      <ConstructionSign />
 
       <h1 className='my-1.5 font-display text-[clamp(2.2rem,7vw,4.6rem)] leading-none font-black text-accent [text-shadow:2px_2px_0_var(--head-b),4px_4px_0_#0009]'>
         JERAMAI FABER
