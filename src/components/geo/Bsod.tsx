@@ -40,11 +40,11 @@ export default function Bsod() {
 
   return (
     <div
-      className='fixed inset-0 z-[90] overflow-auto bg-[#0000aa] p-6 font-mono text-[#e0e0e0] sm:p-12'
+      className='fixed inset-0 z-[90] flex flex-col overflow-auto bg-[#0000aa] p-6 font-mono text-[#e0e0e0] sm:p-12'
       role='alertdialog'
       aria-label='Simulated system error'
     >
-      <div className='mx-auto max-w-[640px] leading-relaxed'>
+      <div className='mx-auto my-auto w-full max-w-[640px] leading-relaxed'>
         <p className='mb-6 text-center'>
           <span className='bg-[#e0e0e0] px-3 py-0.5 font-bold text-[#0000aa]'>JERAM.AI</span>
         </p>
@@ -60,10 +60,12 @@ export default function Bsod() {
           <li>&nbsp;&nbsp;You will lose any unsaved information in all applications.</li>
         </ul>
 
-        <p className='mb-6'>
-          Cause: the UNDER CONSTRUCTION sign was clicked seven times. It is a sign, not a button. It has been under construction
-          since 1997 and it will not be hurried.
+        <p className='mb-4'>
+          Cause: the UNDER CONSTRUCTION sign was hit three times and fell off the page. It was a sign, not a button. It had been
+          up since 1997.
         </p>
+
+        <p className='mb-6'>A theme from that year was behind it. It is on the page now.</p>
 
         <p className='text-center'>
           Press any key to continue <span className='animate-blink'>_</span>

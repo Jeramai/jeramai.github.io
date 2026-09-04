@@ -27,6 +27,8 @@
 
   --animate-marquee: marquee 28s linear infinite;
   --animate-blink: blink 1.1s steps(2, start) infinite;
+  --animate-sign-fall: sign-fall 0.9s cubic-bezier(0.4, 0, 1, 1) forwards;
+  --animate-screw-drop: screw-drop 0.7s ease-in forwards;
 }
 
 @keyframes marquee {
@@ -41,6 +43,26 @@
 @keyframes blink {
   to {
     visibility: hidden;
+  }
+}
+
+@keyframes sign-fall {
+  0% {
+    transform: rotate(24deg);
+  }
+  22% {
+    transform: rotate(44deg);
+  }
+  100% {
+    transform: translateY(120vh) rotate(150deg);
+    opacity: 0;
+  }
+}
+
+@keyframes screw-drop {
+  to {
+    transform: translateY(90px) rotate(220deg);
+    opacity: 0;
   }
 }
 
