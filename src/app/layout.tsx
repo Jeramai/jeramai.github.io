@@ -37,7 +37,8 @@ const bootstrap = `(function(){try{var i=${ids};var q=new URLSearchParams(locati
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang='en'>
+    /* The bootstrap stamps data-theme before hydration, so the root is meant to differ. */
+    <html lang='en' suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: bootstrap }} />
       </head>
