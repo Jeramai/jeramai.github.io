@@ -1,6 +1,7 @@
 'use client';
 
 import { useScrollLock } from '@/lib/use-scroll-lock';
+import themes from '@/lib/themes.generated';
 import { useEffect, useState } from 'react';
 
 export const BSOD_EVENT = 'jf:bsod';
@@ -65,7 +66,7 @@ export default function Bsod() {
           up since 1997.
         </p>
 
-        <p className='mb-6'>A theme from that year was behind it. It is on the page now.</p>
+        <p className='mb-6'>A theme from that year is behind it. It unlocks once you have seen all {themes.length}.</p>
 
         <p className='text-center'>
           Press any key to continue <span className='animate-blink'>_</span>
