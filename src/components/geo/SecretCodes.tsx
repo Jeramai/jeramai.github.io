@@ -1,7 +1,7 @@
 'use client';
 
-import { markCurrentSeen, setTheme, useTheme } from '@/lib/theme-store';
-import { secretTheme } from '@/lib/themes.generated';
+import { markCurrentSeen, seenCount, setTheme, useTheme } from '@/lib/theme-store';
+import themes, { secretTheme } from '@/lib/themes.generated';
 import { useEffect, useState } from 'react';
 
 const KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
@@ -11,7 +11,7 @@ const TURBO_MS = 1500;
 export default function SecretCodes() {
   const { shuffle } = useTheme();
   const [turbo, setTurbo] = useState(false);
-  const [found, setFound] = useState(false);
+  const [note, setNote] = useState<string | null>(null);
 
   useEffect(() => {
     let keys: string[] = [];
@@ -32,9 +32,17 @@ export default function SecretCodes() {
         digits = (digits + e.key).slice(-4);
         if (digits === '1997') {
           digits = '';
-          setTheme(secretTheme.id);
-          setFound(true);
-          window.setTimeout(() => setFound(false), 6000);
+          // The secret theme is the reward for finding all of the others. Knowing
+          // the code is not the same as having earned it, so this says how far off
+          // you are rather than handing it over.
+          const seen = seenCount();
+          if (seen >= themes.length) {
+            setTheme(secretTheme.id);
+            setNote('★ 1997 unlocked — secret theme ★');
+          } else {
+            setNote(`1997 needs all ${themes.length} themes — you have ${seen}`);
+          }
+          window.setTimeout(() => setNote(null), 6000);
         }
       }
     };
@@ -53,12 +61,12 @@ export default function SecretCodes() {
     return () => window.clearInterval(id);
   }, [turbo, shuffle]);
 
-  if (!turbo && !found) return null;
+  if (!turbo && !note) return null;
 
   return (
     <output className='pointer-events-none fixed bottom-3 left-1/2 z-[70] -translate-x-1/2'>
       <p className='edge theme-shadow m-0 head-gradient px-4 py-2 font-display text-sm font-bold tracking-widest uppercase'>
-        {found ? '★ 1997 unlocked — secret theme ★' : '▶▶ Turbo mode ◀◀'}
+        {note ?? '▶▶ Turbo mode ◀◀'}
       </p>
     </output>
   );

@@ -1,8 +1,6 @@
 'use client';
 
 import { BSOD_EVENT } from '@/components/geo/Bsod';
-import { setTheme } from '@/lib/theme-store';
-import { secretTheme } from '@/lib/themes.generated';
 import { useState } from 'react';
 
 const BREAKS_AT = 3;
@@ -46,7 +44,6 @@ export default function ConstructionSign() {
 
     window.setTimeout(() => {
       setFallen(true);
-      setTheme(secretTheme.id);
       window.dispatchEvent(new Event(BSOD_EVENT));
     }, fallDelay());
   };
@@ -55,7 +52,7 @@ export default function ConstructionSign() {
     return (
       <p className='m-0 inline-block border-[3px] border-dashed border-edge p-1'>
         <span className='block bg-black px-4 py-1 font-display text-[0.95rem] tracking-[0.16em] text-[#ffd400]'>
-          &#9733; 1997 UNLOCKED &#9733;
+          &#9733; SIGN NOT FOUND &#9733;
         </span>
       </p>
     );
