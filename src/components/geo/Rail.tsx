@@ -16,7 +16,8 @@ const COOL_LINKS = [
   { href: 'https://linkedin.com/in/jeramai', label: 'My LinkedIn' },
   { href: 'https://nestjs.doctor', label: 'nestjs-doctor' },
   { href: 'https://jeramai.github.io/Planet-Crashers/', label: 'Planet Crashers' },
-  { href: 'https://jeramai.github.io/svg-to-3d/', label: 'SVG to 3D' }
+  { href: 'https://jeramai.github.io/svg-to-3d/', label: 'SVG to 3D' },
+  { href: 'https://jeramai.github.io/ditto/', label: 'Ditto' }
 ];
 
 export default function Rail() {

@@ -3,6 +3,15 @@ import Project from '@/types/project';
 // Sample Projects Data
 const projects: Project[] = [
   {
+    title: 'Ditto',
+    category: 'Game',
+    description:
+      'A WebGPU soft-body toy: the real Pokemon X/Y Ditto mesh driven by a tetrahedral physics cage you can grab, stretch and throw. The cage is generated from the model itself with a lattice of Kuhn tetrahedra, so his arms deform instead of shearing, and every surface vertex binds with convex weights. The field around him is HD-2D: pixel tuft sprites that turn to the camera and flatten under his weight.',
+    image: '/projects/ditto.jpg',
+    tags: ['WebGPU', 'Three.js', 'TSL', 'Soft-body physics', 'Python'],
+    demo: 'https://jeramai.github.io/ditto/'
+  },
+  {
     title: 'Camera rep engine',
     category: 'AI and vision',
     description:
