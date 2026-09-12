@@ -61,7 +61,11 @@ const projects: Project[] = [
     description:
       'A 3D platform for manufacturers, and the three products built on it: a sales configurator that prices a machine as you build it, step-by-step visual work instructions on the factory floor, and a spare-part finder that lets a customer click the part they need. Laravel and Next.js behind a Three.js viewer.',
     image: '/projects/salcon.webp',
-    demo: 'https://viewer.salcon.live/viewer/demo',
+    demos: [
+      { label: 'SalCon', url: 'https://viewer.salcon.live/viewer/demo' },
+      { label: 'ProCon', url: 'https://app.procon.live/viewer/demo' },
+      { label: 'SerCon', url: 'https://app.sercon.live/viewer/demo' }
+    ],
     tags: ['Laravel', 'Next.js', 'Three.js', 'Ionic', 'AR/VR']
   },
   {

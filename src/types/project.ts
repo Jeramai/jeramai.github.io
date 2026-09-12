@@ -6,6 +6,7 @@ type Project = {
   tags: string[];
   github?: string;
   demo?: string;
+  demos?: { label: string; url: string }[];
   aiImage?: boolean;
 };
 

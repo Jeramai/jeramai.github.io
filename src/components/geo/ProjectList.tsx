@@ -39,11 +39,11 @@ export default function ProjectList() {
                   [ Code ]
                 </a>
               ) : null}
-              {p.demo ? (
-                <a href={p.demo} className='geo-btn' target='_blank' rel='noopener noreferrer'>
-                  [ Demo ]
+              {(p.demos ?? (p.demo ? [{ label: 'Demo', url: p.demo }] : [])).map((d) => (
+                <a key={d.url} href={d.url} className='geo-btn' target='_blank' rel='noopener noreferrer'>
+                  [ {d.label} ]
                 </a>
-              ) : null}
+              ))}
             </div>
           </div>
         </article>
